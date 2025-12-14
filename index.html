@@ -1,15 +1,368 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lernplattform Webentwicklung</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Your Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <h1>Interaktive Lernplattform für Webentwicklung</h1>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand">Code Your Journey</div>
+      <nav class="app-nav" aria-label="Hauptnavigation">
+        <button class="nav-btn" data-view-target="view-start">Start</button>
+        <button class="nav-btn" data-view-target="view-map">Roadmap</button>
+        <button class="nav-btn" data-view-target="view-editor">Editor</button>
+        <button class="nav-btn" data-view-target="view-profile">Profil</button>
+        <button class="nav-btn" data-view-target="view-finish">Finish</button>
+      </nav>
+      <div class="profile-chip" title="Profil">
+        <span class="avatar">CYJ</span>
+      </div>
+    </header>
 
+    <main id="app">
+      <section id="view-name" class="view view-active" aria-labelledby="name-heading">
+        <div class="gate">
+          <div>
+            <p class="eyebrow">Willkommen</p>
+            <h1 id="name-heading">Wie dürfen wir dich nennen?</h1>
+            <p class="lede">Wir speichern deinen Namen nur lokal, damit wir dich in allen Views persönlich ansprechen.</p>
+          </div>
 
-    <script src="js/main.js"></script>
+          <form id="name-form" class="name-form">
+            <label for="username">Name oder Spitzname</label>
+            <div class="input-row">
+              <input id="username" name="username" type="text" placeholder="z. B. Alex" autocomplete="name" />
+              <button type="submit" class="primary-btn">Weiter</button>
+            </div>
+            <p class="hint">Kein Account nötig: Wir nutzen nur localStorage im Browser.</p>
+          </form>
+        </div>
+      </section>
+
+      <section id="view-start" class="view" aria-labelledby="start-heading">
+        <div class="hero">
+          <p class="eyebrow">Modern Dark Mode · Flat UI</p>
+          <h1 id="start-heading">Starte deine Coding Journey</h1>
+          <p class="lede">
+            Erfahre, was dich in Code Your Journey erwartet: klare Roadmap, Live-Editor, und ein Profil mit Fortschritt.
+          </p>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <h3>Roadmap</h3>
+              <p>HTML, CSS, JS als schlanke Timeline mit Levels und Fortschritt.</p>
+            </article>
+            <article class="feature-card">
+              <h3>Live Editor</h3>
+              <p>3-Spalten-Layout: Anleitung, Code, Preview. Speichert lokal.</p>
+            </article>
+            <article class="feature-card">
+              <h3>Profil</h3>
+              <p>Level, XP, Badges – alles im Dashboard-Look.</p>
+            </article>
+          </div>
+
+          <div class="hero-actions">
+            <button id="start-btn" class="primary-btn">Roadmap öffnen</button>
+            <button class="ghost-btn" data-view-target="view-editor">Direkt zum Editor</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-map" class="view" aria-labelledby="map-heading">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">Deine Route</p>
+            <h2 id="map-heading">Full Stack Developer Pfad</h2>
+            <p class="lede">Fokus auf HTML, CSS, JavaScript. Fortschritt und Themen siehst du auf einen Blick.</p>
+          </div>
+          <div class="progress-chip">
+            <span>Fortschritt</span>
+            <strong id="overall-progress">0%</strong>
+          </div>
+        </header>
+
+        <div class="timeline" aria-label="Lernpfad">
+          <ol class="timeline-list">
+            <li class="timeline-item" data-progress="0" data-status="current" data-lesson-id="html-basics" data-lesson-title="HTML Basics" data-lesson-summary="Struktur des Webs: Tags, Semantik, saubere Dokumente." data-topics="Tags und Struktur|Semantik und Accessibility|Listen und Links" data-level="Level 1">
+              <div class="timeline-node node-html" aria-hidden="true"></div>
+              <article class="timeline-card">
+                <div class="card-top">
+                  <span class="badge badge-html">Level 1</span>
+                  <span class="pill">HTML Basics</span>
+                  <span class="lock-hint">Gesperrt bis vorherige Übung fertig.</span>
+                </div>
+                <h3>Struktur des Webs</h3>
+                <p>Tags, Semantik, Aufbau von sauberen Dokumenten.</p>
+                <div class="card-detail">
+                  <p class="detail-label">Lernstoff</p>
+                  <ul class="detail-list">
+                    <li>Tags und Struktur</li>
+                    <li>Semantik und Accessibility</li>
+                    <li>Listen und Links</li>
+                  </ul>
+                </div>
+                <div class="topic-rail" aria-label="Themen zu HTML Basics">
+                  <p class="detail-label">Teilthemen</p>
+                  <div class="topic-list">
+                    <button class="topic-btn" data-lesson-target="html-basics" data-topic="Struktur">Struktur</button>
+                    <button class="topic-btn" data-lesson-target="html-basics" data-topic="Semantik">Semantik</button>
+                    <button class="topic-btn" data-lesson-target="html-basics" data-topic="Links & Listen">Links & Listen</button>
+                    <button class="topic-btn" data-lesson-target="html-basics" data-topic="Medien">Medien</button>
+                  </div>
+                </div>
+                <div class="progress-bar" data-progress="0"><span></span></div>
+                <div class="card-actions">
+                  <button class="ghost-btn lesson-btn" data-lesson-target="html-basics">Übung öffnen</button>
+                </div>
+              </article>
+            </li>
+
+            <li class="timeline-item" data-progress="0" data-status="locked" data-lesson-id="css-fundamentals" data-lesson-title="CSS Fundamentals" data-lesson-summary="Design & Layout mit Box-Modell, Flex und Grid." data-topics="Box-Modell und Cascade|Flexbox Layouts|Grid Layouts" data-level="Level 2">
+              <div class="timeline-node node-css" aria-hidden="true"></div>
+              <article class="timeline-card">
+                <div class="card-top">
+                  <span class="badge badge-css">Level 2</span>
+                  <span class="pill">CSS Fundamentals</span>
+                  <span class="lock-hint">Gesperrt bis vorherige Übung fertig.</span>
+                </div>
+                <h3>Design & Layout</h3>
+                <p>Box-Modell, Flex/Grid, Typo, Farben im Dark Mode.</p>
+                <div class="card-detail">
+                  <p class="detail-label">Lernstoff</p>
+                  <ul class="detail-list">
+                    <li>Box-Modell und Cascade</li>
+                    <li>Flexbox Layouts</li>
+                    <li>Grid Layouts</li>
+                  </ul>
+                </div>
+                <div class="topic-rail" aria-label="Themen zu CSS Fundamentals">
+                  <p class="detail-label">Teilthemen</p>
+                  <div class="topic-list">
+                    <button class="topic-btn" data-lesson-target="css-fundamentals" data-topic="Box-Modell">Box-Modell</button>
+                    <button class="topic-btn" data-lesson-target="css-fundamentals" data-topic="Flex">Flex</button>
+                    <button class="topic-btn" data-lesson-target="css-fundamentals" data-topic="Grid">Grid</button>
+                    <button class="topic-btn" data-lesson-target="css-fundamentals" data-topic="Farben">Farben</button>
+                  </div>
+                </div>
+                <div class="progress-bar" data-progress="0"><span></span></div>
+                <div class="card-actions">
+                  <button class="ghost-btn lesson-btn" data-lesson-target="css-fundamentals">Übung öffnen</button>
+                </div>
+              </article>
+            </li>
+
+            <li class="timeline-item" data-progress="0" data-status="locked" data-lesson-id="js-intro" data-lesson-title="JavaScript Intro" data-lesson-summary="Interaktivität mit Variablen, Funktionen, DOM." data-topics="Variablen und Datentypen|Funktionen und Events|DOM-Manipulation" data-level="Level 3">
+              <div class="timeline-node node-js" aria-hidden="true"></div>
+              <article class="timeline-card">
+                <div class="card-top">
+                  <span class="badge badge-js">Level 3</span>
+                  <span class="pill">JavaScript Intro</span>
+                  <span class="lock-hint">Gesperrt bis vorherige Übung fertig.</span>
+                </div>
+                <h3>Interaktivität</h3>
+                <p>Variablen, Funktionen, Events und DOM-Handling.</p>
+                <div class="card-detail">
+                  <p class="detail-label">Lernstoff</p>
+                  <ul class="detail-list">
+                    <li>Variablen und Datentypen</li>
+                    <li>Funktionen und Events</li>
+                    <li>DOM-Manipulation</li>
+                  </ul>
+                </div>
+                <div class="topic-rail" aria-label="Themen zu JavaScript Intro">
+                  <p class="detail-label">Teilthemen</p>
+                  <div class="topic-list">
+                    <button class="topic-btn" data-lesson-target="js-intro" data-topic="Variablen">Variablen</button>
+                    <button class="topic-btn" data-lesson-target="js-intro" data-topic="Funktionen">Funktionen</button>
+                    <button class="topic-btn" data-lesson-target="js-intro" data-topic="Events">Events</button>
+                    <button class="topic-btn" data-lesson-target="js-intro" data-topic="DOM">DOM</button>
+                  </div>
+                </div>
+                <div class="progress-bar" data-progress="0"><span></span></div>
+                <div class="card-actions">
+                  <button class="ghost-btn lesson-btn" data-lesson-target="js-intro">Übung öffnen</button>
+                </div>
+              </article>
+            </li>
+
+            <li class="timeline-item" data-progress="0" data-status="locked" data-lesson-id="dom-projects" data-lesson-title="DOM Projects" data-lesson-summary="Kleine Projekte, State-Handling, Deploy." data-topics="Projektstruktur|State-Handling ohne Framework|Deploy mit GitHub Pages" data-level="Level 4">
+              <div class="timeline-node node-js" aria-hidden="true"></div>
+              <article class="timeline-card">
+                <div class="card-top">
+                  <span class="badge badge-js">Level 4</span>
+                  <span class="pill">DOM Projects</span>
+                  <span class="lock-hint">Gesperrt bis vorherige Übung fertig.</span>
+                </div>
+                <h3>Build & Deploy</h3>
+                <p>Kleine Projekte, State-Handling, Deploy auf GitHub Pages.</p>
+                <div class="card-detail">
+                  <p class="detail-label">Lernstoff</p>
+                  <ul class="detail-list">
+                    <li>Projektstruktur</li>
+                    <li>State-Handling ohne Framework</li>
+                    <li>Deploy mit GitHub Pages</li>
+                  </ul>
+                </div>
+                <div class="topic-rail" aria-label="Themen zu DOM Projects">
+                  <p class="detail-label">Teilthemen</p>
+                  <div class="topic-list">
+                    <button class="topic-btn" data-lesson-target="dom-projects" data-topic="Dashboard">Dashboard</button>
+                    <button class="topic-btn" data-lesson-target="dom-projects" data-topic="Filter">Filter</button>
+                    <button class="topic-btn" data-lesson-target="dom-projects" data-topic="State">State</button>
+                    <button class="topic-btn" data-lesson-target="dom-projects" data-topic="Deploy">Deploy</button>
+                  </div>
+                </div>
+                <div class="progress-bar" data-progress="0"><span></span></div>
+                <div class="card-actions">
+                  <button class="ghost-btn lesson-btn" data-lesson-target="dom-projects">Übung öffnen</button>
+                </div>
+              </article>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="view-lesson" class="view" aria-labelledby="lesson-heading">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">Übung</p>
+            <h2 id="lesson-heading">Lesson</h2>
+            <p class="lede" id="lesson-summary">Wähle eine Übung in der Roadmap.</p>
+          </div>
+          <div class="progress-chip" id="lesson-meta">
+            <span id="lesson-level">Level</span>
+            <strong data-username-display>Dein Name</strong>
+          </div>
+        </header>
+
+        <div class="lesson-panel">
+          <div class="lesson-top">
+            <div>
+              <p class="detail-label">Lernstoff</p>
+              <ul class="detail-list" id="lesson-topics"></ul>
+            </div>
+            <div class="lesson-actions">
+              <button class="ghost-btn" data-view-target="view-map">Zurück zur Roadmap</button>
+              <button class="primary-btn" data-view-target="view-editor">Zum Editor</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-editor" class="view" aria-labelledby="editor-heading">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">Bauen & Testen</p>
+            <h2 id="editor-heading">Code Editor</h2>
+            <p class="lede">Drei-Spalten-Setup: Anleitung, Code-Eingabe, Live-Preview im iFrame.</p>
+          </div>
+          <button class="ghost-btn" id="reset-code-btn">Template laden</button>
+        </header>
+
+        <div class="editor-grid">
+          <article class="panel">
+            <header class="panel-head">
+              <h3>Anleitung</h3>
+              <span class="pill">HTML · CSS · JS</span>
+            </header>
+            <ol class="steps">
+              <li>Struktur: Baue ein kleines Card-Layout.</li>
+              <li>Style: Nutze Flex/Grid und die Pastellfarben für Akzente.</li>
+              <li>Interaktivität: Füge einen Button hinzu, der Text im Preview ändert.</li>
+            </ol>
+            <p class="hint">Tip: Der Code wird bei jeder Eingabe sofort in das iFrame geschrieben.</p>
+          </article>
+
+          <article class="panel">
+            <header class="panel-head">
+              <h3>Code</h3>
+              <span class="pill">Live</span>
+            </header>
+            <label class="sr-only" for="code-input">Code-Eingabe</label>
+            <textarea id="code-input" spellcheck="false"></textarea>
+            <p class="hint">Warum speichern? Damit dein Fortschritt im Browser bleibt (localStorage).</p>
+          </article>
+
+          <article class="panel">
+            <header class="panel-head">
+              <h3>Preview</h3>
+              <span class="pill">Live iFrame</span>
+            </header>
+            <div class="preview-wrap">
+              <iframe id="preview-frame" title="Live Preview"></iframe>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="view-profile" class="view" aria-labelledby="profile-heading">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">Dein Dashboard</p>
+            <h2 id="profile-heading">Profil</h2>
+            <p class="lede">Level, XP und Badges auf einen Blick. Einfach gehalten, klarer Fokus.</p>
+          </div>
+          <div class="progress-chip">
+            <span>User</span>
+            <strong data-username-display>Dein Name</strong>
+          </div>
+        </header>
+
+        <div class="profile-grid">
+          <article class="profile-card">
+            <div class="card-icon" aria-hidden="true">LV</div>
+            <div>
+              <p class="eyebrow">Level</p>
+              <h3>3</h3>
+              <p class="muted">Konsistentes Lernen hält dich im Flow.</p>
+            </div>
+          </article>
+
+          <article class="profile-card">
+            <div class="card-icon" aria-hidden="true">XP</div>
+            <div>
+              <p class="eyebrow">XP</p>
+              <h3>1 200</h3>
+              <p class="muted">Sammle XP über Challenges und Projekte.</p>
+            </div>
+          </article>
+
+          <article class="profile-card badges">
+            <div class="card-icon" aria-hidden="true">BD</div>
+            <div>
+              <p class="eyebrow">Badges</p>
+              <div class="badge-row" aria-label="Badges">
+                <span class="mini-badge badge-html" title="HTML"></span>
+                <span class="mini-badge badge-css" title="CSS"></span>
+                <span class="mini-badge badge-js" title="JS"></span>
+              </div>
+              <p class="muted">Schalte mehr frei, wenn du Projekte abschließt.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="view-finish" class="view" aria-labelledby="finish-heading">
+        <div class="hero finish">
+          <p class="eyebrow">Du hast es geschafft</p>
+          <h2 id="finish-heading">Finish</h2>
+          <p class="lede">Kurze Abschlussseite. Teile dein Ergebnis oder starte einen neuen Durchlauf.</p>
+          <div class="hero-actions">
+            <button class="primary-btn" data-view-target="view-start">Neu starten</button>
+            <button class="ghost-btn" data-view-target="view-profile">Zum Profil</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
