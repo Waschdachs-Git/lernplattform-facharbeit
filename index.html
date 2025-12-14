@@ -76,156 +76,94 @@
       </section>
 
       <section id="view-map" class="view" aria-labelledby="map-heading">
-        <header class="section-head">
+        <header class="section-head map-head">
           <div>
-            <p class="eyebrow">Deine Route</p>
-            <h2 id="map-heading">Full Stack Developer Pfad</h2>
-            <p class="lede">Fokus auf HTML, CSS, JavaScript. Fortschritt und Themen siehst du auf einen Blick.</p>
+            <p class="eyebrow">Dein Lernpfad</p>
+            <h2 id="map-heading">Full Stack Roadmap</h2>
+            <p class="lede">Klare Schritte mit kurzen Beschreibungen. Tippe auf ein Modul, um die Themen rechts zu sehen.</p>
           </div>
-          <div class="progress-chip">
-            <span>Fortschritt</span>
-            <strong id="overall-progress">0%</strong>
+          <div class="map-progress" aria-label="Gesamtfortschritt">
+            <div class="map-progress-top">
+              <span>Progress</span>
+              <strong id="overall-progress">0%</strong>
+            </div>
+            <div class="map-progress-bar"><span id="master-progress-bar"></span></div>
           </div>
         </header>
 
-        <div class="timeline" aria-label="Lernpfad">
-          <ol class="timeline-list">
-            <li class="timeline-item" data-progress="0" data-status="current" data-lesson-id="html-basics" data-lesson-title="HTML Basics" data-lesson-summary="Struktur des Webs: Tags, Semantik, saubere Dokumente." data-topics="Tags und Struktur|Semantik und Accessibility|Listen und Links" data-level="Level 1">
-              <div class="timeline-node node-html" aria-hidden="true"></div>
-              <article class="timeline-card">
-                <div class="card-top">
-                  <span class="badge badge-html">Level 1</span>
-                  <span class="pill">HTML Basics</span>
-                  <span class="lock-hint">Gesperrt bis vorherige Übung fertig.</span>
-                </div>
-                <h3>Struktur des Webs</h3>
-                <p>Tags, Semantik, Aufbau von sauberen Dokumenten.</p>
-                <div class="card-detail">
-                  <p class="detail-label">Lernstoff</p>
-                  <ul class="detail-list">
-                    <li>Tags und Struktur</li>
-                    <li>Semantik und Accessibility</li>
-                    <li>Listen und Links</li>
-                  </ul>
-                </div>
-                <div class="topic-rail" aria-label="Themen zu HTML Basics">
-                  <p class="detail-label">Teilthemen</p>
-                  <div class="topic-list">
-                    <button class="topic-btn" data-lesson-target="html-basics" data-topic="Struktur">Struktur</button>
-                    <button class="topic-btn" data-lesson-target="html-basics" data-topic="Semantik">Semantik</button>
-                    <button class="topic-btn" data-lesson-target="html-basics" data-topic="Links & Listen">Links & Listen</button>
-                    <button class="topic-btn" data-lesson-target="html-basics" data-topic="Medien">Medien</button>
-                  </div>
-                </div>
-                <div class="progress-bar" data-progress="0"><span></span></div>
-                <div class="card-actions">
-                  <button class="ghost-btn lesson-btn" data-lesson-target="html-basics">Übung öffnen</button>
-                </div>
-              </article>
-            </li>
+        <div class="roadmap-board clean" aria-label="Lernpfad">
+          <div class="module-column" role="list">
+            <article class="timeline-item module-card is-active" role="listitem" data-progress="40" data-status="current" data-lesson-id="html-basics" data-lesson-title="HTML Basics" data-lesson-summary="Struktur, Semantik und saubere Dokumente." data-topics="Tags & Attribute|Listen & Links|Formulare|Medien" data-level="Level 1">
+              <header class="module-head">
+                <span class="level-badge level-html">HTML</span>
+                <span class="pill muted">Einsteigen</span>
+              </header>
+              <p class="module-title">HTML Basics</p>
+              <p class="module-sub">Lerne, wie Seiten aufgebaut sind und wie Elemente korrekt beschriftet werden.</p>
+              <div class="module-footer">
+                <div class="progress-bar" data-progress="40"><span></span></div>
+                <button class="ghost-btn lesson-btn" data-lesson-target="html-basics">Themen öffnen</button>
+              </div>
+            </article>
 
-            <li class="timeline-item" data-progress="0" data-status="locked" data-lesson-id="css-fundamentals" data-lesson-title="CSS Fundamentals" data-lesson-summary="Design & Layout mit Box-Modell, Flex und Grid." data-topics="Box-Modell und Cascade|Flexbox Layouts|Grid Layouts" data-level="Level 2">
-              <div class="timeline-node node-css" aria-hidden="true"></div>
-              <article class="timeline-card">
-                <div class="card-top">
-                  <span class="badge badge-css">Level 2</span>
-                  <span class="pill">CSS Fundamentals</span>
-                  <span class="lock-hint">Gesperrt bis vorherige Übung fertig.</span>
-                </div>
-                <h3>Design & Layout</h3>
-                <p>Box-Modell, Flex/Grid, Typo, Farben im Dark Mode.</p>
-                <div class="card-detail">
-                  <p class="detail-label">Lernstoff</p>
-                  <ul class="detail-list">
-                    <li>Box-Modell und Cascade</li>
-                    <li>Flexbox Layouts</li>
-                    <li>Grid Layouts</li>
-                  </ul>
-                </div>
-                <div class="topic-rail" aria-label="Themen zu CSS Fundamentals">
-                  <p class="detail-label">Teilthemen</p>
-                  <div class="topic-list">
-                    <button class="topic-btn" data-lesson-target="css-fundamentals" data-topic="Box-Modell">Box-Modell</button>
-                    <button class="topic-btn" data-lesson-target="css-fundamentals" data-topic="Flex">Flex</button>
-                    <button class="topic-btn" data-lesson-target="css-fundamentals" data-topic="Grid">Grid</button>
-                    <button class="topic-btn" data-lesson-target="css-fundamentals" data-topic="Farben">Farben</button>
-                  </div>
-                </div>
-                <div class="progress-bar" data-progress="0"><span></span></div>
-                <div class="card-actions">
-                  <button class="ghost-btn lesson-btn" data-lesson-target="css-fundamentals">Übung öffnen</button>
-                </div>
-              </article>
-            </li>
+            <article class="timeline-item module-card" role="listitem" data-progress="10" data-status="locked" data-lesson-id="css-fundamentals" data-lesson-title="CSS Fundamentals" data-lesson-summary="Layout, Farben, Typografie und Responsive Basics." data-topics="Box-Modell|Flexbox|Grid|Farben & Typo" data-level="Level 2">
+              <header class="module-head">
+                <span class="level-badge level-css">CSS</span>
+                <span class="pill muted">Gestalten</span>
+              </header>
+              <p class="module-title">CSS Fundamentals</p>
+              <p class="module-sub">Lerne, Oberflächen lesbar und klar zu gestalten – vom Box-Modell bis Grid.</p>
+              <div class="module-footer">
+                <div class="progress-bar" data-progress="10"><span></span></div>
+                <button class="ghost-btn lesson-btn" data-lesson-target="css-fundamentals">Themen öffnen</button>
+              </div>
+            </article>
 
-            <li class="timeline-item" data-progress="0" data-status="locked" data-lesson-id="js-intro" data-lesson-title="JavaScript Intro" data-lesson-summary="Interaktivität mit Variablen, Funktionen, DOM." data-topics="Variablen und Datentypen|Funktionen und Events|DOM-Manipulation" data-level="Level 3">
-              <div class="timeline-node node-js" aria-hidden="true"></div>
-              <article class="timeline-card">
-                <div class="card-top">
-                  <span class="badge badge-js">Level 3</span>
-                  <span class="pill">JavaScript Intro</span>
-                  <span class="lock-hint">Gesperrt bis vorherige Übung fertig.</span>
-                </div>
-                <h3>Interaktivität</h3>
-                <p>Variablen, Funktionen, Events und DOM-Handling.</p>
-                <div class="card-detail">
-                  <p class="detail-label">Lernstoff</p>
-                  <ul class="detail-list">
-                    <li>Variablen und Datentypen</li>
-                    <li>Funktionen und Events</li>
-                    <li>DOM-Manipulation</li>
-                  </ul>
-                </div>
-                <div class="topic-rail" aria-label="Themen zu JavaScript Intro">
-                  <p class="detail-label">Teilthemen</p>
-                  <div class="topic-list">
-                    <button class="topic-btn" data-lesson-target="js-intro" data-topic="Variablen">Variablen</button>
-                    <button class="topic-btn" data-lesson-target="js-intro" data-topic="Funktionen">Funktionen</button>
-                    <button class="topic-btn" data-lesson-target="js-intro" data-topic="Events">Events</button>
-                    <button class="topic-btn" data-lesson-target="js-intro" data-topic="DOM">DOM</button>
-                  </div>
-                </div>
-                <div class="progress-bar" data-progress="0"><span></span></div>
-                <div class="card-actions">
-                  <button class="ghost-btn lesson-btn" data-lesson-target="js-intro">Übung öffnen</button>
-                </div>
-              </article>
-            </li>
+            <article class="timeline-item module-card" role="listitem" data-progress="5" data-status="locked" data-lesson-id="js-intro" data-lesson-title="JavaScript Basics" data-lesson-summary="Variablen, Events, DOM und kleine Interaktionen." data-topics="Variablen|Funktionen|Events|DOM" data-level="Level 3">
+              <header class="module-head">
+                <span class="level-badge level-js">JS</span>
+                <span class="pill muted">Interaktiv</span>
+              </header>
+              <p class="module-title">JavaScript Basics</p>
+              <p class="module-sub">Mach Seiten lebendig: Werte speichern, klicken, reagieren, Elemente verändern.</p>
+              <div class="module-footer">
+                <div class="progress-bar" data-progress="5"><span></span></div>
+                <button class="ghost-btn lesson-btn" data-lesson-target="js-intro">Themen öffnen</button>
+              </div>
+            </article>
 
-            <li class="timeline-item" data-progress="0" data-status="locked" data-lesson-id="dom-projects" data-lesson-title="DOM Projects" data-lesson-summary="Kleine Projekte, State-Handling, Deploy." data-topics="Projektstruktur|State-Handling ohne Framework|Deploy mit GitHub Pages" data-level="Level 4">
-              <div class="timeline-node node-js" aria-hidden="true"></div>
-              <article class="timeline-card">
-                <div class="card-top">
-                  <span class="badge badge-js">Level 4</span>
-                  <span class="pill">DOM Projects</span>
-                  <span class="lock-hint">Gesperrt bis vorherige Übung fertig.</span>
-                </div>
-                <h3>Build & Deploy</h3>
-                <p>Kleine Projekte, State-Handling, Deploy auf GitHub Pages.</p>
-                <div class="card-detail">
-                  <p class="detail-label">Lernstoff</p>
-                  <ul class="detail-list">
-                    <li>Projektstruktur</li>
-                    <li>State-Handling ohne Framework</li>
-                    <li>Deploy mit GitHub Pages</li>
-                  </ul>
-                </div>
-                <div class="topic-rail" aria-label="Themen zu DOM Projects">
-                  <p class="detail-label">Teilthemen</p>
-                  <div class="topic-list">
-                    <button class="topic-btn" data-lesson-target="dom-projects" data-topic="Dashboard">Dashboard</button>
-                    <button class="topic-btn" data-lesson-target="dom-projects" data-topic="Filter">Filter</button>
-                    <button class="topic-btn" data-lesson-target="dom-projects" data-topic="State">State</button>
-                    <button class="topic-btn" data-lesson-target="dom-projects" data-topic="Deploy">Deploy</button>
-                  </div>
-                </div>
+            <article class="timeline-item module-card" role="listitem" data-progress="0" data-status="locked" data-lesson-id="react-patterns" data-lesson-title="React Patterns" data-lesson-summary="Komponenten, State und Wiederverwendbarkeit." data-topics="Komponenten|State|Hooks|Performance" data-level="Level 4">
+              <header class="module-head">
+                <span class="level-badge level-react">React</span>
+                <span class="pill muted">Aufbauen</span>
+              </header>
+              <p class="module-title">React Patterns</p>
+              <p class="module-sub">Strukturiere Apps mit Komponenten, teile Logik und halte sie performant.</p>
+              <div class="module-footer">
                 <div class="progress-bar" data-progress="0"><span></span></div>
-                <div class="card-actions">
-                  <button class="ghost-btn lesson-btn" data-lesson-target="dom-projects">Übung öffnen</button>
-                </div>
-              </article>
-            </li>
-          </ol>
+                <button class="ghost-btn lesson-btn" data-lesson-target="react-patterns">Themen öffnen</button>
+              </div>
+            </article>
+          </div>
+
+          <aside class="topic-panel" aria-live="polite">
+            <div class="topic-head">
+              <p class="eyebrow">Aktives Modul</p>
+              <h3 id="active-topic-title">HTML Basics</h3>
+              <p class="lede" id="active-topic-summary">Struktur, Semantik und saubere Dokumente.</p>
+            </div>
+            <div>
+              <p class="detail-label">Teilthemen</p>
+              <ul class="detail-list" id="active-topic-list"></ul>
+            </div>
+            <div class="mini-progress-row">
+              <p class="muted">Fortschritt im Modul</p>
+              <div class="mini-progress"><span id="active-mini"></span><span class="mini-value" id="active-mini-val">0%</span></div>
+            </div>
+            <div class="topic-actions">
+              <button class="primary-btn lesson-btn" data-lesson-target="html-basics">Übung öffnen</button>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -320,8 +258,8 @@
             <div class="card-icon" aria-hidden="true">LV</div>
             <div>
               <p class="eyebrow">Level</p>
-              <h3>3</h3>
-              <p class="muted">Konsistentes Lernen hält dich im Flow.</p>
+              <h3>1</h3>
+              <p class="muted">Starte frisch – Fortschritt wird hier sichtbar.</p>
             </div>
           </article>
 
@@ -329,7 +267,7 @@
             <div class="card-icon" aria-hidden="true">XP</div>
             <div>
               <p class="eyebrow">XP</p>
-              <h3>1 200</h3>
+              <h3>0</h3>
               <p class="muted">Sammle XP über Challenges und Projekte.</p>
             </div>
           </article>
