@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+  <!-- Meta-Daten und Titel der Seite -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Code Your Journey</title>
+  <title>Schritt für Schritt zur eigenen Website</title>
+  
+  <!-- Google Fonts: Space Grotesk Schriftart -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Haupt-Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="app-shell">
+    <!-- Header mit Navigation und Profil-Chip
+         Bleibt beim Scrollen oben (sticky) -->
     <header class="app-header">
-      <div class="brand">Code Your Journey</div>
+      <div class="brand">Schritt für Schritt zur eigenen Website</div>
       <nav class="app-nav" aria-label="Hauptnavigation">
         <button class="nav-btn" data-view-target="view-start">Start</button>
         <button class="nav-btn" data-view-target="view-map">Roadmap</button>
-        <button class="nav-btn" data-view-target="view-editor">Editor</button>
+        <button class="nav-btn" data-view-target="view-levels">Level Übersicht</button>
         <button class="nav-btn" data-view-target="view-profile">Profil</button>
         <button class="nav-btn" data-view-target="view-finish">Finish</button>
       </nav>
       <div class="profile-chip" title="Profil">
         <span class="avatar">CYJ</span>
       </div>
+
     </header>
 
     <main id="app">
+      <!-- View: Namen eingeben (Startbildschirm)
+           Wird als erstes angezeigt, danach wird der Name im localStorage gespeichert -->
       <section id="view-name" class="view view-active" aria-labelledby="name-heading">
         <div class="gate">
           <div>
@@ -45,36 +54,79 @@
         </div>
       </section>
 
+      <!-- View: Startseite (Landing Page)
+           Zeigt Hero-Bereich, Features und Call-to-Action -->
       <section id="view-start" class="view" aria-labelledby="start-heading">
-        <div class="hero">
-          <p class="eyebrow">Modern Dark Mode · Flat UI</p>
-          <h1 id="start-heading">Starte deine Coding Journey</h1>
-          <p class="lede">
-            Erfahre, was dich in Code Your Journey erwartet: klare Roadmap, Live-Editor, und ein Profil mit Fortschritt.
-          </p>
+        <div class="landing">
+          <div class="hero-block">
+            <p class="eyebrow">Modern Dark Mode · Flat UI</p>
+            <h1 id="start-heading">Schritt für Schritt zur eigenen Website</h1>
+            <p class="lede hero-sub">Die Roadmap, die dich mit Locks, XP und einem klaren Profil Schritt für Schritt durchs Web-Development führt.</p>
+            <div class="hero-cta">
+              <button id="start-btn" class="primary-btn">Roadmap öffnen</button>
+            </div>
 
-          <div class="feature-grid">
-            <article class="feature-card">
-              <h3>Roadmap</h3>
-              <p>HTML, CSS, JS als schlanke Timeline mit Levels und Fortschritt.</p>
-            </article>
-            <article class="feature-card">
-              <h3>Live Editor</h3>
-              <p>3-Spalten-Layout: Anleitung, Code, Preview. Speichert lokal.</p>
-            </article>
-            <article class="feature-card">
-              <h3>Profil</h3>
-              <p>Level, XP, Badges – alles im Dashboard-Look.</p>
-            </article>
+            <div class="app-preview" aria-label="App Vorschau">
+              <div class="preview-window">
+                <div class="preview-chrome" aria-hidden="true">
+                  <span class="preview-dot html"></span>
+                  <span class="preview-dot css"></span>
+                  <span class="preview-dot js"></span>
+                  <span class="preview-address">cyj.local/roadmap</span>
+                </div>
+                <div class="preview-body">
+                  <div class="preview-panel">
+                    <p class="eyebrow">Roadmap</p>
+                    <h3>HTML → CSS → JS</h3>
+                    <p class="muted">Module mit Locks, klare Reihenfolge, Fortschritt bleibt gespeichert.</p>
+                    <div class="preview-progress">
+                      <span style="width: 28%"></span>
+                    </div>
+                  </div>
+                  <div class="preview-stack">
+                    <div class="preview-card">
+                      <p class="eyebrow">XP</p>
+                      <strong>240 XP</strong>
+                      <p class="muted">Sammle Punkte durch absolvierte Themen.</p>
+                    </div>
+                    <div class="preview-card">
+                      <p class="eyebrow">Locks</p>
+                      <strong>Sequential</strong>
+                      <p class="muted">Module werden nacheinander freigeschaltet.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="hero-actions">
-            <button id="start-btn" class="primary-btn">Roadmap öffnen</button>
-            <button class="ghost-btn" data-view-target="view-editor">Direkt zum Editor</button>
+          <div class="info-block">
+            <h2>Sag Hallo zu Schritt für Schritt zur eigenen Website</h2>
+            <p class="lede">Alles, was du brauchst, um fokussiert und motiviert zu lernen – mit Roadmap, XP und Profil.</p>
+          </div>
+
+          <div class="feature-grid landing-grid">
+            <article class="feature-card glow-html">
+              <div class="feature-icon" aria-hidden="true">🗺️</div>
+              <h3>Roadmap</h3>
+              <p>Schlanke Timeline mit klaren Modulen. Wähle Themen, öffne Details und tracke deinen Fortschritt.</p>
+            </article>
+            <article class="feature-card glow-css">
+              <div class="feature-icon" aria-hidden="true">🔒</div>
+              <h3>XP & Locks</h3>
+              <p>Gamification inklusive: Sammle XP, schalte Module nacheinander frei und halte dein Momentum.</p>
+            </article>
+            <article class="feature-card glow-js">
+              <div class="feature-icon" aria-hidden="true">👤</div>
+              <h3>Profil</h3>
+              <p>Alles an einem Ort: Level, XP und Badges im klaren Dashboard-Look.</p>
+            </article>
           </div>
         </div>
       </section>
 
+      <!-- View: Roadmap (Hauptnavigation durch alle Module)
+           Zeigt Module-Karten und Detail-Panel mit Themen -->
       <section id="view-map" class="view" aria-labelledby="map-heading">
         <header class="section-head map-head">
           <div>
@@ -93,55 +145,55 @@
 
         <div class="roadmap-board clean" aria-label="Lernpfad">
           <div class="module-column" role="list">
-            <article class="timeline-item module-card is-active" role="listitem" data-progress="40" data-status="current" data-lesson-id="html-basics" data-lesson-title="HTML Basics" data-lesson-summary="Struktur, Semantik und saubere Dokumente." data-topics="Tags & Attribute|Listen & Links|Formulare|Medien" data-level="Level 1">
+            <article class="timeline-item module-card is-active" role="listitem" data-progress="0" data-status="current" data-lesson-id="intro" data-lesson-title="Einstieg" data-lesson-summary="Verstehe, was im Browser passiert, bevor du eine Zeile Code schreibst." data-topics="Level 1: Die Reise eines Klicks|Level 2: Drei Gesichter einer Website|Level 3: Blick hinter die Kulissen|Level 4: Abschluss-Quiz" data-level="Level 1">
+              <header class="module-head">
+                <span class="level-badge level-html">Einstieg</span>
+                <span class="pill muted">Wie das Web funktioniert</span>
+              </header>
+              <p class="module-title">Der Einstieg – Die Welt der Nullen & Einsen</p>
+              <p class="module-sub">Vom Klick zur Antwort: entdecke, wie Browser, Server und Assets zusammenspielen.</p>
+              <div class="module-footer">
+                <div class="progress-bar" data-progress="0"><span></span></div>
+                <button class="ghost-btn lesson-btn" data-lesson-target="intro">Themen öffnen</button>
+              </div>
+            </article>
+
+            <article class="timeline-item module-card" role="listitem" data-progress="0" data-status="current" data-lesson-id="html" data-lesson-title="HTML" data-lesson-summary="Struktur, Semantik und saubere Dokumente." data-topics="" data-level="Level 2">
               <header class="module-head">
                 <span class="level-badge level-html">HTML</span>
-                <span class="pill muted">Einsteigen</span>
+                <span class="pill muted">Das Skelett</span>
               </header>
-              <p class="module-title">HTML Basics</p>
-              <p class="module-sub">Lerne, wie Seiten aufgebaut sind und wie Elemente korrekt beschriftet werden.</p>
+                <p class="module-title">HTML – Das Skelett deiner Seite</p>
+              <p class="module-sub">Lerne, wie du Inhalte sauber strukturierst und semantisch auszeichnest.</p>
               <div class="module-footer">
-                <div class="progress-bar" data-progress="40"><span></span></div>
-                <button class="ghost-btn lesson-btn" data-lesson-target="html-basics">Themen öffnen</button>
+                <div class="progress-bar" data-progress="0"><span></span></div>
+                <button class="ghost-btn lesson-btn" data-lesson-target="html">Themen öffnen</button>
               </div>
             </article>
 
-            <article class="timeline-item module-card" role="listitem" data-progress="10" data-status="locked" data-lesson-id="css-fundamentals" data-lesson-title="CSS Fundamentals" data-lesson-summary="Layout, Farben, Typografie und Responsive Basics." data-topics="Box-Modell|Flexbox|Grid|Farben & Typo" data-level="Level 2">
+            <article class="timeline-item module-card" role="listitem" data-progress="0" data-status="locked" data-lesson-id="css" data-lesson-title="CSS" data-lesson-summary="Layout, Farben, Typografie und Responsive Basics." data-topics="Selectors|Box-Model|Fonts|Flexbox|Animation" data-level="Level 3">
               <header class="module-head">
                 <span class="level-badge level-css">CSS</span>
-                <span class="pill muted">Gestalten</span>
+                <span class="pill muted">Style & Design</span>
               </header>
-              <p class="module-title">CSS Fundamentals</p>
-              <p class="module-sub">Lerne, Oberflächen lesbar und klar zu gestalten – vom Box-Modell bis Grid.</p>
+              <p class="module-title">CSS – Style & Design</p>
+              <p class="module-sub">Gestalte Layout, Farbe und Typografie – von Box-Modell bis Grid.</p>
               <div class="module-footer">
-                <div class="progress-bar" data-progress="10"><span></span></div>
-                <button class="ghost-btn lesson-btn" data-lesson-target="css-fundamentals">Themen öffnen</button>
+                <div class="progress-bar" data-progress="0"><span></span></div>
+                <button class="ghost-btn lesson-btn" data-lesson-target="css">Themen öffnen</button>
               </div>
             </article>
 
-            <article class="timeline-item module-card" role="listitem" data-progress="5" data-status="locked" data-lesson-id="js-intro" data-lesson-title="JavaScript Basics" data-lesson-summary="Variablen, Events, DOM und kleine Interaktionen." data-topics="Variablen|Funktionen|Events|DOM" data-level="Level 3">
+            <article class="timeline-item module-card" role="listitem" data-progress="0" data-status="locked" data-lesson-id="js" data-lesson-title="JavaScript" data-lesson-summary="Variablen, Events, DOM und kleine Interaktionen." data-topics="Variables|Functions|DOM|Events|Final Project" data-level="Level 4">
               <header class="module-head">
                 <span class="level-badge level-js">JS</span>
                 <span class="pill muted">Interaktiv</span>
               </header>
-              <p class="module-title">JavaScript Basics</p>
-              <p class="module-sub">Mach Seiten lebendig: Werte speichern, klicken, reagieren, Elemente verändern.</p>
-              <div class="module-footer">
-                <div class="progress-bar" data-progress="5"><span></span></div>
-                <button class="ghost-btn lesson-btn" data-lesson-target="js-intro">Themen öffnen</button>
-              </div>
-            </article>
-
-            <article class="timeline-item module-card" role="listitem" data-progress="0" data-status="locked" data-lesson-id="react-patterns" data-lesson-title="React Patterns" data-lesson-summary="Komponenten, State und Wiederverwendbarkeit." data-topics="Komponenten|State|Hooks|Performance" data-level="Level 4">
-              <header class="module-head">
-                <span class="level-badge level-react">React</span>
-                <span class="pill muted">Aufbauen</span>
-              </header>
-              <p class="module-title">React Patterns</p>
-              <p class="module-sub">Strukturiere Apps mit Komponenten, teile Logik und halte sie performant.</p>
+              <p class="module-title">JavaScript – Leben einhauchen</p>
+              <p class="module-sub">Mach Seiten lebendig: Werte speichern, reagieren, DOM verändern.</p>
               <div class="module-footer">
                 <div class="progress-bar" data-progress="0"><span></span></div>
-                <button class="ghost-btn lesson-btn" data-lesson-target="react-patterns">Themen öffnen</button>
+                <button class="ghost-btn lesson-btn" data-lesson-target="js">Themen öffnen</button>
               </div>
             </article>
           </div>
@@ -149,24 +201,163 @@
           <aside class="topic-panel" aria-live="polite">
             <div class="topic-head">
               <p class="eyebrow">Aktives Modul</p>
-              <h3 id="active-topic-title">HTML Basics</h3>
-              <p class="lede" id="active-topic-summary">Struktur, Semantik und saubere Dokumente.</p>
+              <h3 id="active-topic-title">Einstieg</h3>
+              <p class="lede" id="active-topic-summary">Verstehe Browser, Server, Requests und wie Seiten ausgeliefert werden.</p>
             </div>
             <div>
               <p class="detail-label">Teilthemen</p>
               <ul class="detail-list" id="active-topic-list"></ul>
+            </div>
+
+            <div class="intro-lab" id="intro-lab" hidden>
+              <div class="lab-level" data-level="1">
+                <div class="lab-head">
+                  <p class="eyebrow">Level 1</p>
+                  <div>
+                    <h4>Die Reise eines Klicks</h4>
+                    <p class="muted">Starte die Anfrage und sieh, wie das Paket vom Browser zum Server und zurück flitzt.</p>
+                  </div>
+                </div>
+                <div class="request-sim" id="request-sim">
+                  <div class="request-node user">User</div>
+                  <div class="request-path">
+                    <span class="request-packet" id="request-packet"></span>
+                  </div>
+                  <div class="request-node server">Server</div>
+                </div>
+                <div class="lab-actions">
+                  <button class="primary-btn" id="request-start-btn">Anfrage senden</button>
+                  <span class="muted" id="request-status">Bereit.</span>
+                </div>
+                <button class="ghost-btn lab-next" data-level-next="1" disabled>Weiter</button>
+              </div>
+
+              <div class="lab-level" data-level="2">
+                <div class="lab-head">
+                  <p class="eyebrow">Level 2</p>
+                  <div>
+                    <h4>Die drei Gesichter einer Website</h4>
+                    <p class="muted">Schalte HTML, CSS und JS und beobachte, was verschwindet.</p>
+                  </div>
+                </div>
+                <div class="switches">
+                  <label class="switch">
+                    <input type="checkbox" id="toggle-html" checked />
+                    <span>HTML</span>
+                  </label>
+                  <label class="switch">
+                    <input type="checkbox" id="toggle-css" checked />
+                    <span>CSS</span>
+                  </label>
+                  <label class="switch">
+                    <input type="checkbox" id="toggle-js" checked />
+                    <span>JS</span>
+                  </label>
+                </div>
+                <div class="switch-card" id="switch-card">
+                  <div class="switch-card-top">
+                    <p class="eyebrow">Profile</p>
+                    <button class="like-btn" type="button" aria-pressed="false" id="like-btn">❤ Like</button>
+                  </div>
+                  <h5 id="switch-title">Space Explorer</h5>
+                  <p id="switch-body">HTML hält den Text zusammen. CSS macht ihn schön. JS lässt den Like-Button leben.</p>
+                </div>
+                <button class="ghost-btn lab-next" data-level-next="2" disabled>Weiter</button>
+              </div>
+
+              <div class="lab-level" data-level="3">
+                <div class="lab-head">
+                  <p class="eyebrow">Level 3</p>
+                  <div>
+                    <h4>Blick hinter die Kulissen</h4>
+                    <p class="muted">Finde die geheime ID im Code-Viewer und gib sie ein.</p>
+                  </div>
+                </div>
+                <div class="inspector">
+                  <div class="inspector-code" id="inspector-code">
+                    <button type="button" class="code-line" data-secret="CYJ-142">&lt;span class="pill" id="cyj-142"&gt;Launch&lt;/span&gt;</button>
+                    <button type="button" class="code-line">&lt;div class="label"&gt;Status: Ready&lt;/div&gt;</button>
+                    <button type="button" class="code-line">&lt;button class="cta"&gt;Boarding&lt;/button&gt;</button>
+                  </div>
+                  <div class="inspector-input-row">
+                    <input type="text" id="inspector-input" placeholder="geheime ID eingeben" />
+                    <button class="primary-btn" type="button" id="inspector-check">Prüfen</button>
+                  </div>
+                  <p class="muted" id="inspector-hint">Tipp: Klick auf das markierte Element, um die ID zu sehen.</p>
+                </div>
+                <button class="ghost-btn lab-next" data-level-next="3" disabled>Weiter</button>
+              </div>
+
+              <div class="lab-level" data-level="4">
+                <div class="lab-head">
+                  <p class="eyebrow">Level 4</p>
+                  <div>
+                    <h4>Abschluss-Quiz</h4>
+                    <p class="muted">3 Fragen – bei Erfolg springt das Schloss auf.</p>
+                  </div>
+                </div>
+                <form class="quiz" id="quiz-form">
+                  <div class="quiz-q">
+                    <p>1. Was liefert der Server?</p>
+                    <label><input type="radio" name="q1" value="assets" /> Dateien wie HTML, CSS, JS</label>
+                    <label><input type="radio" name="q1" value="hardware" /> Neue Hardware</label>
+                  </div>
+                  <div class="quiz-q">
+                    <p>2. Was passiert ohne CSS?</p>
+                    <label><input type="radio" name="q2" value="unstyled" /> Die Seite wirkt nackt und ungestylt.</label>
+                    <label><input type="radio" name="q2" value="faster" /> Sie lädt gar nicht.</label>
+                  </div>
+                  <div class="quiz-q">
+                    <p>3. Wofür nutzt du JS hier?</p>
+                    <label><input type="radio" name="q3" value="interaktion" /> Für Interaktionen wie Buttons.</label>
+                    <label><input type="radio" name="q3" value="farbe" /> Für Hintergrundfarbe.</label>
+                  </div>
+                  <div class="quiz-actions">
+                    <button type="submit" class="primary-btn">Antwort prüfen</button>
+                    <span class="muted" id="quiz-status">Viel Erfolg!</span>
+                  </div>
+                </form>
+                <button class="ghost-btn lab-next" data-level-next="4" disabled>Weiter</button>
+              </div>
             </div>
             <div class="mini-progress-row">
               <p class="muted">Fortschritt im Modul</p>
               <div class="mini-progress"><span id="active-mini"></span><span class="mini-value" id="active-mini-val">0%</span></div>
             </div>
             <div class="topic-actions">
-              <button class="primary-btn lesson-btn" data-lesson-target="html-basics">Übung öffnen</button>
+              <button class="primary-btn lesson-btn" data-lesson-target="intro">Themen öffnen</button>
             </div>
           </aside>
         </div>
       </section>
 
+      <!-- View: Level-Übersicht
+           Zeigt alle Level eines Moduls (HTML, CSS oder JS) in Kartenform -->
+      <section id="view-levels" class="view" aria-labelledby="levels-heading">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow" id="levels-module-eyebrow">HTML Modul</p>
+            <h2 id="levels-heading">Level Übersicht</h2>
+            <p class="lede">Wähle ein Level aus, dann startest du in den Phasen.</p>
+          </div>
+          <div class="lesson-actions">
+            <button class="ghost-btn" data-view-target="view-map">Zurück zur Roadmap</button>
+          </div>
+        </header>
+
+        <div class="tab-row" aria-label="Modul wählen">
+          <button type="button" class="ghost-btn is-active" data-levels-module="html">HTML</button>
+          <button type="button" class="ghost-btn" data-levels-module="css">CSS</button>
+          <button type="button" class="ghost-btn" data-levels-module="js">JS</button>
+        </div>
+
+        <div class="level-overview" id="level-overview"></div>
+        <div class="level-overview" id="css-level-overview" hidden></div>
+        <div class="level-overview" id="js-level-overview" hidden></div>
+      </section>
+
+      <!-- View: Lesson (Hauptarbeitsbereich für HTML/CSS/JS Levels)
+           Zeigt die drei Phasen: Theorie, Check und Sandbox -->
       <section id="view-lesson" class="view" aria-labelledby="lesson-heading">
         <header class="section-head">
           <div>
@@ -182,64 +373,247 @@
 
         <div class="lesson-panel">
           <div class="lesson-top">
-            <div>
-              <p class="detail-label">Lernstoff</p>
-              <ul class="detail-list" id="lesson-topics"></ul>
-            </div>
             <div class="lesson-actions">
               <button class="ghost-btn" data-view-target="view-map">Zurück zur Roadmap</button>
-              <button class="primary-btn" data-view-target="view-editor">Zum Editor</button>
+            </div>
+          </div>
+
+          <!-- HTML-Lab: Arbeitsbereich für alle HTML-Level
+               Zeigt Theorie, Check-Fragen und Sandbox mit Live-Vorschau -->
+          <div class="html-lab" id="html-level-panel" hidden aria-live="polite">
+            <div class="html-lab-head">
+              <div>
+                <p class="eyebrow">HTML Modul</p>
+                <h4 id="html-level-title">Level</h4>
+                <p class="muted" id="html-level-desc">Drei Phasen: Theorie, Check, Sandbox.</p>
+              </div>
+              <div class="phase-badges" id="html-phase-badges"></div>
+              <div class="lab-head-actions">
+                <button class="ghost-btn" data-view-target="view-levels" type="button">Zur Level Übersicht</button>
+              </div>
+            </div>
+
+            <div class="phase-grid">
+              <article class="phase-card" id="phase-theory">
+                <div class="phase-top">
+                  <p class="eyebrow">Phase 1</p>
+                  <h5>Theorie</h5>
+                </div>
+                <p class="muted" id="theory-text"></p>
+                <button class="ghost-btn" id="theory-done-btn" type="button">Gelesen</button>
+              </article>
+
+              <article class="phase-card" id="phase-check">
+                <div class="phase-top">
+                  <p class="eyebrow">Phase 2</p>
+                  <h5>Check</h5>
+                </div>
+                <div id="check-body"></div>
+                <button class="ghost-btn" id="check-submit" type="button">Prüfen</button>
+                <p class="muted" id="check-feedback"></p>
+              </article>
+
+              <article class="phase-card" id="phase-sandbox">
+                <div class="phase-top">
+                  <p class="eyebrow">Phase 3</p>
+                  <h5>Sandbox</h5>
+                </div>
+                <p class="muted" id="sandbox-hint"></p>
+                <ul class="sandbox-checklist" id="sandbox-checklist"></ul>
+
+				<div class="sandbox-split">
+				  <div class="sandbox-pane sandbox-pane-preview">
+          <iframe class="preview-frame" id="sandbox-preview" title="HTML Vorschau"></iframe>
+				  </div>
+				  <div class="sandbox-pane sandbox-pane-editor">
+					<textarea id="sandbox-editor" class="code-input" rows="12"></textarea>
+					<div class="phase-actions">
+					  <button class="ghost-btn" id="sandbox-show-preview" type="button">Vorschau</button>
+					  <button class="primary-btn" id="sandbox-check" type="button">Ergebnis überprüfen</button>
+					  <span class="muted" id="sandbox-feedback"></span>
+					</div>
+				  </div>
+				</div>
+              </article>
+
+            </div>
+          </div>
+
+          <!-- CSS-Lab: Arbeitsbereich für alle CSS-Level
+               Zeigt Theorie, Check-Fragen und Sandbox mit Live-Preview -->
+          <div class="html-lab" id="css-level-panel" hidden aria-live="polite">
+            <div class="html-lab-head">
+              <div>
+                <p class="eyebrow">CSS Modul</p>
+                <h4 id="css-level-title">Level</h4>
+                <p class="muted" id="css-level-desc">Drei Phasen: Theorie, Check, Sandbox.</p>
+              </div>
+              <div class="phase-badges" id="css-phase-badges"></div>
+			  <div class="lab-head-actions">
+				<button class="ghost-btn" data-view-target="view-levels" type="button">Zur Level Übersicht</button>
+			  </div>
+            </div>
+
+            <div class="phase-grid">
+              <article class="phase-card" id="css-phase-theory">
+                <div class="phase-top">
+                  <p class="eyebrow">Phase 1</p>
+                  <h5>Theorie</h5>
+                </div>
+                <p class="muted" id="css-theory-text"></p>
+                <button class="ghost-btn" id="css-theory-done" type="button">Gelesen</button>
+              </article>
+
+              <article class="phase-card" id="css-phase-check">
+                <div class="phase-top">
+                  <p class="eyebrow">Phase 2</p>
+                  <h5>Check</h5>
+                </div>
+                <div id="css-check-body"></div>
+                <button class="ghost-btn" id="css-check-submit" type="button">Prüfen</button>
+                <p class="muted" id="css-check-feedback"></p>
+              </article>
+
+              <article class="phase-card" id="css-phase-sandbox">
+                <div class="phase-top">
+                  <p class="eyebrow">Phase 3</p>
+                  <h5>Sandbox</h5>
+                </div>
+                <p class="muted" id="css-sandbox-hint"></p>
+                <ul class="sandbox-checklist" id="css-sandbox-checklist"></ul>
+
+				<div class="sandbox-split">
+				  <div class="sandbox-pane sandbox-pane-preview">
+					<iframe class="preview-frame" id="css-sandbox-preview" title="CSS Vorschau"></iframe>
+				  </div>
+				  <div class="sandbox-pane sandbox-pane-editor">
+					<textarea id="css-sandbox-editor" class="code-input" rows="12"></textarea>
+					<div class="phase-actions">
+					  <button class="ghost-btn" id="css-sandbox-show-preview" type="button">Vorschau</button>
+					  <button class="primary-btn" id="css-sandbox-check" type="button">Ergebnis überprüfen</button>
+					  <span class="muted" id="css-sandbox-feedback"></span>
+					</div>
+				  </div>
+				</div>
+              </article>
+            </div>
+          </div>
+
+          <!-- JS-Lab: Arbeitsbereich für alle JavaScript-Level
+               Zeigt Theorie, Check-Fragen und Sandbox mit Console-Output -->
+          <div class="html-lab" id="js-level-panel" hidden aria-live="polite">
+            <div class="html-lab-head">
+              <div>
+                <p class="eyebrow">JS Modul</p>
+                <h4 id="js-level-title">Level</h4>
+                <p class="muted" id="js-level-desc">Drei Phasen: Theorie, Check, Sandbox.</p>
+              </div>
+              <div class="phase-badges" id="js-phase-badges"></div>
+			  <div class="lab-head-actions">
+				<button class="ghost-btn" data-view-target="view-levels" type="button">Zur Level Übersicht</button>
+			  </div>
+            </div>
+
+            <div class="phase-grid">
+              <article class="phase-card" id="js-phase-theory">
+                <div class="phase-top">
+                  <p class="eyebrow">Phase 1</p>
+                  <h5>Theorie</h5>
+                </div>
+                <p class="muted prewrap" id="js-theory-text"></p>
+                <button class="ghost-btn" id="js-theory-done" type="button">Gelesen</button>
+              </article>
+
+              <article class="phase-card" id="js-phase-check">
+                <div class="phase-top">
+                  <p class="eyebrow">Phase 2</p>
+                  <h5>Check</h5>
+                </div>
+                <div id="js-check-body"></div>
+                <button class="ghost-btn" id="js-check-submit" type="button">Prüfen</button>
+                <p class="muted" id="js-check-feedback"></p>
+              </article>
+
+              <article class="phase-card" id="js-phase-sandbox">
+                <div class="phase-top">
+                  <p class="eyebrow">Phase 3</p>
+                  <h5>Sandbox</h5>
+                </div>
+                <p class="muted" id="js-sandbox-hint"></p>
+                <ul class="sandbox-checklist" id="js-sandbox-checklist"></ul>
+
+				<div class="sandbox-split">
+          <div class="sandbox-pane sandbox-pane-preview">
+          <iframe class="preview-frame" id="js-sandbox-preview" title="JS Vorschau" sandbox="allow-scripts"></iframe>
+            <pre class="code-input console-box" id="js-console"></pre>
+				  </div>
+				  <div class="sandbox-pane sandbox-pane-editor">
+					<textarea id="js-sandbox-editor" class="code-input" rows="12" spellcheck="false"></textarea>
+					<div class="phase-actions">
+					  <button class="ghost-btn" id="js-sandbox-run" type="button">Code ausführen</button>
+					  <button class="primary-btn" id="js-sandbox-check" type="button">Ergebnis überprüfen</button>
+					  <span class="muted" id="js-sandbox-feedback"></span>
+					</div>
+				  </div>
+				</div>
+              </article>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="view-editor" class="view" aria-labelledby="editor-heading">
+      <section id="view-topics" class="view" aria-labelledby="topic-list-title">
         <header class="section-head">
           <div>
-            <p class="eyebrow">Bauen & Testen</p>
-            <h2 id="editor-heading">Code Editor</h2>
-            <p class="lede">Drei-Spalten-Setup: Anleitung, Code-Eingabe, Live-Preview im iFrame.</p>
+            <p class="eyebrow">Themen</p>
+            <h2 id="topic-list-title">Themenliste</h2>
+            <p class="lede" id="topic-list-summary">Wähle ein Thema aus, um zur Lerneinheit zu springen.</p>
           </div>
-          <button class="ghost-btn" id="reset-code-btn">Template laden</button>
+          <div class="progress-chip">
+            <span>Modul</span>
+            <strong id="topic-list-mod">Aktuell</strong>
+          </div>
         </header>
 
-        <div class="editor-grid">
-          <article class="panel">
-            <header class="panel-head">
-              <h3>Anleitung</h3>
-              <span class="pill">HTML · CSS · JS</span>
-            </header>
-            <ol class="steps">
-              <li>Struktur: Baue ein kleines Card-Layout.</li>
-              <li>Style: Nutze Flex/Grid und die Pastellfarben für Akzente.</li>
-              <li>Interaktivität: Füge einen Button hinzu, der Text im Preview ändert.</li>
-            </ol>
-            <p class="hint">Tip: Der Code wird bei jeder Eingabe sofort in das iFrame geschrieben.</p>
-          </article>
-
-          <article class="panel">
-            <header class="panel-head">
-              <h3>Code</h3>
-              <span class="pill">Live</span>
-            </header>
-            <label class="sr-only" for="code-input">Code-Eingabe</label>
-            <textarea id="code-input" spellcheck="false"></textarea>
-            <p class="hint">Warum speichern? Damit dein Fortschritt im Browser bleibt (localStorage).</p>
-          </article>
-
-          <article class="panel">
-            <header class="panel-head">
-              <h3>Preview</h3>
-              <span class="pill">Live iFrame</span>
-            </header>
-            <div class="preview-wrap">
-              <iframe id="preview-frame" title="Live Preview"></iframe>
+          <div class="lesson-panel">
+            <div>
+              <p class="detail-label">Teilthemen</p>
+              <div class="detail-list" id="topic-list"></div>
             </div>
-          </article>
+          <div class="lesson-actions">
+            <button class="ghost-btn" data-view-target="view-map">Zurück zur Roadmap</button>
+          </div>
         </div>
       </section>
 
+      <section id="view-intro-level" class="view" aria-labelledby="intro-level-title">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">Einstieg · Optional</p>
+            <h2 id="intro-level-title">Level-Ansicht</h2>
+            <p class="lede">Diese Stufe ist ein sanfter Start ohne XP-Pflicht. Lies die Hinweise und probiere die Interaktion.</p>
+          </div>
+          <div class="lesson-actions">
+            <button class="ghost-btn" data-view-target="view-topics">Zurück zur Auswahl</button>
+            <button class="ghost-btn" data-view-target="view-map">Zurück zur Roadmap</button>
+          </div>
+        </header>
+
+        <div class="lesson-panel intro-level-layout">
+          <aside class="info-card">
+            <p class="eyebrow">Was du hier lernst</p>
+            <h4 id="intro-level-info-title">Level-Infos</h4>
+            <p class="muted" id="intro-level-info-body">Kurzer Überblick zum aktuellen Level.</p>
+            <ul class="detail-list" id="intro-level-info-points"></ul>
+            <p class="muted small">Dieses Modul ist optional und vergibt keine XP.</p>
+          </aside>
+
+          <div id="intro-level-host"></div>
+        </div>
+      </section>
+
+      <!-- View: Profil (Dashboard mit Level, XP und Badges)
+           Zeigt den aktuellen Fortschritt und erlaubt Namensänderung -->
       <section id="view-profile" class="view" aria-labelledby="profile-heading">
         <header class="section-head">
           <div>
@@ -258,8 +632,8 @@
             <div class="card-icon" aria-hidden="true">LV</div>
             <div>
               <p class="eyebrow">Level</p>
-              <h3>1</h3>
-              <p class="muted">Starte frisch – Fortschritt wird hier sichtbar.</p>
+              <h3 id="profile-level-value">1</h3>
+              <p class="muted" id="profile-level-hint">Starte frisch – Fortschritt wird hier sichtbar.</p>
             </div>
           </article>
 
@@ -267,8 +641,8 @@
             <div class="card-icon" aria-hidden="true">XP</div>
             <div>
               <p class="eyebrow">XP</p>
-              <h3>0</h3>
-              <p class="muted">Sammle XP über Challenges und Projekte.</p>
+              <h3 id="profile-xp-value">0</h3>
+              <p class="muted" id="profile-xp-hint">Sammle XP über absolvierte Phasen.</p>
             </div>
           </article>
 
@@ -284,9 +658,26 @@
               <p class="muted">Schalte mehr frei, wenn du Projekte abschließt.</p>
             </div>
           </article>
+
+          <article class="profile-card name-card">
+            <div class="card-icon" aria-hidden="true">NM</div>
+            <div>
+              <p class="eyebrow">Name ändern</p>
+              <form id="profile-name-form" class="name-form">
+                <label for="profile-name-input">Dein Name</label>
+                <div class="input-row">
+                  <input id="profile-name-input" type="text" placeholder="z. B. Alex" autocomplete="name" />
+                  <button type="submit" class="primary-btn">Speichern</button>
+                </div>
+                <p class="hint">Tipp: ADMIN schaltet alle Level frei.</p>
+              </form>
+            </div>
+          </article>
         </div>
       </section>
 
+      <!-- View: Finish (Abschlussseite nach Beenden aller Module)
+           Gratulation und Option für Neustart -->
       <section id="view-finish" class="view" aria-labelledby="finish-heading">
         <div class="hero finish">
           <p class="eyebrow">Du hast es geschafft</p>
@@ -298,9 +689,12 @@
           </div>
         </div>
       </section>
+
     </main>
   </div>
 
-  <script src="app.js"></script>
+  <!-- Haupt-JavaScript-Datei (als ES6 Module)
+       Steuert die gesamte App-Logik, Views und Module -->
+  <script type="module" src="app.js"></script>
 </body>
 </html>
