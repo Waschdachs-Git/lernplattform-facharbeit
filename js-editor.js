@@ -30,6 +30,7 @@ const jsOverview = document.getElementById("js-level-overview");
 let jsState = buildDefaultJsState();
 // Callback-Funktion, die bei Fortschritt aufgerufen wird
 let onJsProgress = () => {};
+let onSandboxComplete = () => {};
 
 // Token-System für die Vorschau (verhindert alte Nachrichten)
 const previewRunToken = {};
@@ -672,6 +673,7 @@ function handleSandboxCheck() {
 
 	renderChecklist(levelKey);
 	if (jsState.levels[levelKey].sandboxDone) {
+		onSandboxComplete(levelKey);
 		if (jsFeedback) jsFeedback.textContent = "Top, weiter!";
 		onJsProgress(computeJsProgress());
 		renderJsLabUI();
@@ -771,6 +773,7 @@ export function renderJsLab() {
 
 export function wireJsLab(options = {}) {
 	onJsProgress = options.onProgress || (() => {});
+	onSandboxComplete = options.onSandboxComplete || (() => {});
 	loadJsState();
 
 	if (!messageBridgeBound) {

@@ -1,6 +1,7 @@
-import { defaultTemplate } from "./html-levels.js";
+import { defaultTemplate, HTML_LEVELS } from "./html-levels.js";
 import { computeHtmlProgress, loadHtmlState, setActiveLevel, getHtmlState } from "./html-state.js";
 import { renderHtmlLab, renderLevelOverview, wireHtmlLab } from "./html-lab.js";
+import { CSS_LEVELS } from "./css-content.js";
 import {
 	wireCssLab,
 	renderCssLab,
@@ -22,6 +23,7 @@ import {
 	getJsState,
 	completeAllJsLevels,
 } from "./js-editor.js";
+import { JS_LEVELS } from "./js-content.js";
 
 // Speicher-Schlüssel für localStorage
 const NAME_KEY = "cyj:name"; // Name des Nutzers
@@ -143,6 +145,42 @@ function animateMetric(el, cls) {
 	void el.offsetWidth;
 	el.classList.add(cls);
 	window.setTimeout(() => el.classList.remove(cls), 500);
+}
+
+function showXpToast(message) {
+	const text = String(message || "").trim();
+	if (!text) return;
+
+	let toast = document.querySelector(".xp-toast");
+	if (!toast) {
+		toast = document.createElement("div");
+		toast.className = "xp-toast";
+		document.body.appendChild(toast);
+	}
+
+	toast.textContent = text;
+	toast.classList.add("is-visible");
+
+	window.clearTimeout(showXpToast._t);
+	showXpToast._t = window.setTimeout(() => {
+		toast.classList.remove("is-visible");
+	}, 2200);
+}
+
+function handleSandboxComplete(moduleKey, levelKey) {
+	const lvl = Number(levelKey);
+	if (!Number.isFinite(lvl)) return;
+
+	const xpState = loadXpState();
+	const awardId = `${moduleKey}:${lvl}:sandboxDone`;
+	const xp = xpState.awarded?.[awardId] ? 0 : xpForPhase(lvl, "sandboxDone");
+
+	// Wird nach dem onProgress-Aufruf ausgeführt (XP wird dort final vergeben).
+	queueMicrotask(() => {
+		if (xp > 0) showXpToast(`+${xp} XP (Sandbox abgeschlossen)`);
+		setLevelsModule(moduleKey);
+		showView("view-levels");
+	});
 }
 
 // Aktualisiert die Profil-Anzeige mit XP und Level
@@ -378,6 +416,38 @@ function setTopicPanel(item) {
 	if (topicActionButton && item.dataset.lessonId) {
 		topicActionButton.setAttribute("data-lesson-target", item.dataset.lessonId);
 	}
+}
+
+function getLevelTitles(levels, limit = 6) {
+	if (!levels || typeof levels !== "object") return [];
+	return Object.keys(levels)
+		.map((key) => Number(key))
+		.filter((key) => Number.isFinite(key))
+		.sort((a, b) => a - b)
+		.slice(0, limit)
+		.map((key) => levels[key]?.title)
+		.filter(Boolean);
+}
+
+// Füllt die Roadmap-Übersicht aus den echten Level-Daten.
+// Dadurch bleiben Titel/Teilthemen aktuell, auch wenn Inhalte in den Level-Dateien geändert werden.
+function hydrateRoadmapTopicsFromLevels() {
+	const levelsByModule = {
+		html: HTML_LEVELS,
+		css: CSS_LEVELS,
+		js: JS_LEVELS,
+	};
+
+	timelineItems.forEach((item) => {
+		const moduleId = item.dataset.lessonId;
+		const levels = levelsByModule[moduleId];
+		if (!levels) return;
+
+		const titles = getLevelTitles(levels, 6);
+		if (titles.length) {
+			item.dataset.topics = titles.join("|");
+		}
+	});
 }
 
 function openLesson(item, topic = "") {
@@ -718,6 +788,7 @@ function init() {
 	hydrateCssState();
 	hydrateJsState();
 	loadName();
+	hydrateRoadmapTopicsFromLevels();
 
 	updateHtmlProgress();
 	updateCssProgress(computeCssProgress());
@@ -735,9 +806,13 @@ function init() {
 	wireTimelineHover();
 	wireSideTopics();
 
-	wireHtmlLab({ onProgress: updateHtmlProgress, onOpenLevel: openLevelFromOverview });
-	wireCssLab({ onProgress: updateCssProgress });
-	wireJsLab({ onProgress: updateJsProgress });
+	wireHtmlLab({
+		onProgress: updateHtmlProgress,
+		onOpenLevel: openLevelFromOverview,
+		onSandboxComplete: (levelKey) => handleSandboxComplete("html", levelKey),
+	});
+	wireCssLab({ onProgress: updateCssProgress, onSandboxComplete: (levelKey) => handleSandboxComplete("css", levelKey) });
+	wireJsLab({ onProgress: updateJsProgress, onSandboxComplete: (levelKey) => handleSandboxComplete("js", levelKey) });
 
 	if (activeLevelsModule === "css") {
 		renderCssLevelOverview(openCssLevelFromOverview);

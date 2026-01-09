@@ -30,6 +30,7 @@ const cssSandboxCard = document.getElementById("css-phase-sandbox");
 let cssState = buildDefaultCssState();
 // Callback-Funktion, die bei Fortschritt aufgerufen wird
 let onCssProgress = () => {};
+let onSandboxComplete = () => {};
 
 // Erstellt einen frischen Lernstand für alle CSS-Level
 // Nutzt den Standard-CSS-Code aus css-content.js
@@ -719,6 +720,7 @@ function handleSandboxCheck() {
   renderChecklist(levelKey);
 
   if (cssState.levels[levelKey].sandboxDone) {
+    onSandboxComplete(levelKey);
     const reward = CSS_LEVELS[levelKey]?.reward ? ` ${CSS_LEVELS[levelKey].reward}` : "";
     if (cssFeedback) {
       cssFeedback.textContent = levelKey === 4 ? CSS_LEVELS[levelKey].sandbox.finishText : `Top, weiter!${reward}`;
@@ -740,6 +742,7 @@ export function renderCssLab() {
 
 export function wireCssLab(options = {}) {
   onCssProgress = options.onProgress || (() => {});
+  onSandboxComplete = options.onSandboxComplete || (() => {});
   loadCssState();
 
   cssTabs.forEach((btn) => {

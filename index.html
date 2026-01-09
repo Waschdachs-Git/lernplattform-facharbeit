@@ -59,11 +59,16 @@
       <section id="view-start" class="view" aria-labelledby="start-heading">
         <div class="landing">
           <div class="hero-block">
-            <p class="eyebrow">Modern Dark Mode · Flat UI</p>
+            <p class="eyebrow">Schülerprojekt · Facharbeit · Lernplattform</p>
             <h1 id="start-heading">Schritt für Schritt zur eigenen Website</h1>
-            <p class="lede hero-sub">Die Roadmap, die dich mit Locks, XP und einem klaren Profil Schritt für Schritt durchs Web-Development führt.</p>
+            <p class="lede hero-sub">Eine Lernplattform zum Üben von HTML, CSS und JavaScript. Jedes Level hat Theorie, einen kurzen Check und eine Sandbox mit Vorschau.</p>
             <div class="hero-cta">
               <button id="start-btn" class="primary-btn">Roadmap öffnen</button>
+            </div>
+
+            <div class="student-note" role="note" aria-label="Hinweis">
+              <h2>Hinweis: Schülerprojekt</h2>
+              <p class="muted">Dieses Projekt wurde im Rahmen einer Facharbeit erstellt. Fokus liegt auf Lernlogik, Verständlichkeit und sauberer Struktur. Das Design darf sich noch verändern.</p>
             </div>
 
             <div class="app-preview" aria-label="App Vorschau">
@@ -76,23 +81,23 @@
                 </div>
                 <div class="preview-body">
                   <div class="preview-panel">
-                    <p class="eyebrow">Roadmap</p>
+                    <p class="eyebrow">So funktioniert es</p>
                     <h3>HTML → CSS → JS</h3>
-                    <p class="muted">Module mit Locks, klare Reihenfolge, Fortschritt bleibt gespeichert.</p>
+                    <p class="muted">Module bauen aufeinander auf. Fortschritt wird lokal im Browser gespeichert.</p>
                     <div class="preview-progress">
                       <span style="width: 28%"></span>
                     </div>
                   </div>
                   <div class="preview-stack">
                     <div class="preview-card">
-                      <p class="eyebrow">XP</p>
-                      <strong>240 XP</strong>
-                      <p class="muted">Sammle Punkte durch absolvierte Themen.</p>
+                      <p class="eyebrow">3 Phasen</p>
+                      <strong>Theorie · Check · Sandbox</strong>
+                      <p class="muted">Kleine Schritte: erst verstehen, dann prüfen, dann anwenden.</p>
                     </div>
                     <div class="preview-card">
-                      <p class="eyebrow">Locks</p>
-                      <strong>Sequential</strong>
-                      <p class="muted">Module werden nacheinander freigeschaltet.</p>
+                      <p class="eyebrow">Fortschritt</p>
+                      <strong>XP · Badges · Locks</strong>
+                      <p class="muted">Motivation durch Fortschrittsanzeige und Freischaltungen.</p>
                     </div>
                   </div>
                 </div>
@@ -101,25 +106,30 @@
           </div>
 
           <div class="info-block">
-            <h2>Sag Hallo zu Schritt für Schritt zur eigenen Website</h2>
-            <p class="lede">Alles, was du brauchst, um fokussiert und motiviert zu lernen – mit Roadmap, XP und Profil.</p>
+            <h2>Was macht diese Website?</h2>
+            <p class="lede">Die App zeigt einen Lernpfad mit Modulen. In jedem Modul gibt es Levels, die in drei Phasen gelöst werden. Am Ende entsteht eine kleine eigene Website.</p>
           </div>
 
           <div class="feature-grid landing-grid">
             <article class="feature-card glow-html">
-              <div class="feature-icon" aria-hidden="true">🗺️</div>
-              <h3>Roadmap</h3>
-              <p>Schlanke Timeline mit klaren Modulen. Wähle Themen, öffne Details und tracke deinen Fortschritt.</p>
+              <div class="feature-icon" aria-hidden="true">1</div>
+              <h3>Roadmap & Reihenfolge</h3>
+              <p>Der Lernpfad führt von HTML über CSS zu JavaScript. Module werden passend zum Fortschritt freigeschaltet.</p>
             </article>
             <article class="feature-card glow-css">
-              <div class="feature-icon" aria-hidden="true">🔒</div>
-              <h3>XP & Locks</h3>
-              <p>Gamification inklusive: Sammle XP, schalte Module nacheinander frei und halte dein Momentum.</p>
+              <div class="feature-icon" aria-hidden="true">2</div>
+              <h3>3-Phasen-Modell</h3>
+              <p>Jedes Level besteht aus Theorie, einem kurzen Check und einer Sandbox. Dadurch bleibt der Einstieg einfach und übersichtlich.</p>
             </article>
             <article class="feature-card glow-js">
-              <div class="feature-icon" aria-hidden="true">👤</div>
-              <h3>Profil</h3>
-              <p>Alles an einem Ort: Level, XP und Badges im klaren Dashboard-Look.</p>
+              <div class="feature-icon" aria-hidden="true">3</div>
+              <h3>Sandbox & Vorschau</h3>
+              <p>Code wird direkt ausprobiert: HTML/CSS mit Vorschau im iframe, JavaScript mit Konsole und interaktiven Elementen.</p>
+            </article>
+            <article class="feature-card glow-html">
+              <div class="feature-icon" aria-hidden="true">4</div>
+              <h3>Fortschritt speichern</h3>
+              <p>Der Lernstand wird lokal im Browser gespeichert (localStorage). So bleibt alles auch nach dem Schließen erhalten.</p>
             </article>
           </div>
         </div>
@@ -426,7 +436,7 @@
           <iframe class="preview-frame" id="sandbox-preview" title="HTML Vorschau"></iframe>
 				  </div>
 				  <div class="sandbox-pane sandbox-pane-editor">
-					<textarea id="sandbox-editor" class="code-input" rows="12"></textarea>
+          <textarea id="sandbox-editor" class="code-input" rows="12" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea>
 					<div class="phase-actions">
 					  <button class="ghost-btn" id="sandbox-show-preview" type="button">Vorschau</button>
 					  <button class="primary-btn" id="sandbox-check" type="button">Ergebnis überprüfen</button>
@@ -487,7 +497,7 @@
 					<iframe class="preview-frame" id="css-sandbox-preview" title="CSS Vorschau"></iframe>
 				  </div>
 				  <div class="sandbox-pane sandbox-pane-editor">
-					<textarea id="css-sandbox-editor" class="code-input" rows="12"></textarea>
+          <textarea id="css-sandbox-editor" class="code-input" rows="12" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea>
 					<div class="phase-actions">
 					  <button class="ghost-btn" id="css-sandbox-show-preview" type="button">Vorschau</button>
 					  <button class="primary-btn" id="css-sandbox-check" type="button">Ergebnis überprüfen</button>

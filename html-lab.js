@@ -33,6 +33,7 @@ const sandboxCard = document.getElementById("phase-sandbox");
 
 // Callback-Funktion, die bei Fortschritt aufgerufen wird
 let onProgress = () => {};
+let onSandboxComplete = () => {};
 // Handler für das Öffnen von Levels (aus der Übersicht heraus)
 let openLevelHandler = () => {};
 
@@ -305,6 +306,7 @@ function checkHtmlResult(levelKey) {
   const res = validateSandbox(levelKey, value);
   if (res.ok) {
     updateLevelState(levelKey, { sandboxDone: true, previewValue: value });
+    onSandboxComplete(levelKey);
     renderPhaseBadges(levelKey);
     renderSandboxChecklist(levelKey);
     renderHtmlLab();
@@ -561,6 +563,7 @@ function handleCheckSubmit() {
 // Wird einmal beim Start der App aufgerufen
 export function wireHtmlLab(options = {}) {
   onProgress = options.onProgress || (() => {});
+  onSandboxComplete = options.onSandboxComplete || (() => {});
   openLevelHandler = options.onOpenLevel || openLevelHandler;
   loadHtmlState();
 
