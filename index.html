@@ -21,9 +21,6 @@
         <button class="nav-btn" data-view-target="view-profile">Profil</button>
         <button class="nav-btn" data-view-target="view-finish">Finish</button>
       </nav>
-      <div class="profile-chip" title="Profil">
-        <span class="avatar">CYJ</span>
-      </div>
 
     </header>
 
@@ -111,20 +108,7 @@
 
         <div class="roadmap-board clean" aria-label="Lernpfad">
           <div class="module-column" role="list">
-            <article class="timeline-item module-card is-active" role="listitem" data-progress="0" data-status="current" data-lesson-id="intro" data-lesson-title="Einstieg" data-lesson-summary="Verstehe, was im Browser passiert, bevor du eine Zeile Code schreibst." data-topics="Level 1: Die Reise eines Klicks|Level 2: Drei Gesichter einer Website|Level 3: Blick hinter die Kulissen|Level 4: Abschluss-Quiz" data-level="Level 1">
-              <header class="module-head">
-                <span class="level-badge level-html">Einstieg</span>
-                <span class="pill muted">Wie das Web funktioniert</span>
-              </header>
-              <p class="module-title">Der Einstieg – Die Welt der Nullen & Einsen</p>
-              <p class="module-sub">Vom Klick zur Antwort: entdecke, wie Browser, Server und Assets zusammenspielen.</p>
-              <div class="module-footer">
-                <div class="progress-bar" data-progress="0"><span></span></div>
-                <button class="ghost-btn lesson-btn" data-lesson-target="intro">Themen öffnen</button>
-              </div>
-            </article>
-
-            <article class="timeline-item module-card" role="listitem" data-progress="0" data-status="current" data-lesson-id="html" data-lesson-title="HTML" data-lesson-summary="Struktur, Semantik und saubere Dokumente." data-topics="" data-level="Level 2">
+            <article class="timeline-item module-card is-active" role="listitem" data-progress="0" data-status="current" data-lesson-id="html" data-lesson-title="HTML" data-lesson-summary="Struktur, Semantik und saubere Dokumente." data-topics="" data-level="Level 1">
               <header class="module-head">
                 <span class="level-badge level-html">HTML</span>
                 <span class="pill muted">Das Skelett</span>
@@ -137,7 +121,7 @@
               </div>
             </article>
 
-            <article class="timeline-item module-card" role="listitem" data-progress="0" data-status="locked" data-lesson-id="css" data-lesson-title="CSS" data-lesson-summary="Layout, Farben, Typografie und Responsive Basics." data-topics="Selectors|Box-Model|Fonts|Flexbox|Animation" data-level="Level 3">
+            <article class="timeline-item module-card" role="listitem" data-progress="0" data-status="locked" data-lesson-id="css" data-lesson-title="CSS" data-lesson-summary="Layout, Farben, Typografie und Responsive Basics." data-topics="Selectors|Box-Model|Fonts|Flexbox|Animation" data-level="Level 2">
               <header class="module-head">
                 <span class="level-badge level-css">CSS</span>
                 <span class="pill muted">Style & Design</span>
@@ -150,7 +134,7 @@
               </div>
             </article>
 
-            <article class="timeline-item module-card" role="listitem" data-progress="0" data-status="locked" data-lesson-id="js" data-lesson-title="JavaScript" data-lesson-summary="Variablen, Events, DOM und kleine Interaktionen." data-topics="Variables|Functions|DOM|Events|Final Project" data-level="Level 4">
+            <article class="timeline-item module-card" role="listitem" data-progress="0" data-status="locked" data-lesson-id="js" data-lesson-title="JavaScript" data-lesson-summary="Variablen, Events, DOM und kleine Interaktionen." data-topics="Variables|Functions|DOM|Events|Final Project" data-level="Level 3">
               <header class="module-head">
                 <span class="level-badge level-js">JS</span>
                 <span class="pill muted">Interaktiv</span>
@@ -167,131 +151,20 @@
           <aside class="topic-panel" aria-live="polite">
             <div class="topic-head">
               <p class="eyebrow">Aktives Modul</p>
-              <h3 id="active-topic-title">Einstieg</h3>
-              <p class="lede" id="active-topic-summary">Verstehe Browser, Server, Requests und wie Seiten ausgeliefert werden.</p>
+              <h3 id="active-topic-title">HTML</h3>
+              <p class="lede" id="active-topic-summary">Struktur, Semantik und saubere Dokumente.</p>
             </div>
             <div>
               <p class="detail-label">Teilthemen</p>
               <ul class="detail-list" id="active-topic-list"></ul>
             </div>
 
-            <div class="intro-lab" id="intro-lab" hidden>
-              <div class="lab-level" data-level="1">
-                <div class="lab-head">
-                  <p class="eyebrow">Level 1</p>
-                  <div>
-                    <h4>Die Reise eines Klicks</h4>
-                    <p class="muted">Starte die Anfrage und sieh, wie das Paket vom Browser zum Server und zurück flitzt.</p>
-                  </div>
-                </div>
-                <div class="request-sim" id="request-sim">
-                  <div class="request-node user">User</div>
-                  <div class="request-path">
-                    <span class="request-packet" id="request-packet"></span>
-                  </div>
-                  <div class="request-node server">Server</div>
-                </div>
-                <div class="lab-actions">
-                  <button class="primary-btn" id="request-start-btn">Anfrage senden</button>
-                  <span class="muted" id="request-status">Bereit.</span>
-                </div>
-                <button class="ghost-btn lab-next" data-level-next="1" disabled>Weiter</button>
-              </div>
-
-              <div class="lab-level" data-level="2">
-                <div class="lab-head">
-                  <p class="eyebrow">Level 2</p>
-                  <div>
-                    <h4>Die drei Gesichter einer Website</h4>
-                    <p class="muted">Schalte HTML, CSS und JS und beobachte, was verschwindet.</p>
-                  </div>
-                </div>
-                <div class="switches">
-                  <label class="switch">
-                    <input type="checkbox" id="toggle-html" checked />
-                    <span>HTML</span>
-                  </label>
-                  <label class="switch">
-                    <input type="checkbox" id="toggle-css" checked />
-                    <span>CSS</span>
-                  </label>
-                  <label class="switch">
-                    <input type="checkbox" id="toggle-js" checked />
-                    <span>JS</span>
-                  </label>
-                </div>
-                <div class="switch-card" id="switch-card">
-                  <div class="switch-card-top">
-                    <p class="eyebrow">Profile</p>
-                    <button class="like-btn" type="button" aria-pressed="false" id="like-btn">❤ Like</button>
-                  </div>
-                  <h5 id="switch-title">Space Explorer</h5>
-                  <p id="switch-body">HTML hält den Text zusammen. CSS macht ihn schön. JS lässt den Like-Button leben.</p>
-                </div>
-                <button class="ghost-btn lab-next" data-level-next="2" disabled>Weiter</button>
-              </div>
-
-              <div class="lab-level" data-level="3">
-                <div class="lab-head">
-                  <p class="eyebrow">Level 3</p>
-                  <div>
-                    <h4>Blick hinter die Kulissen</h4>
-                    <p class="muted">Finde die geheime ID im Code-Viewer und gib sie ein.</p>
-                  </div>
-                </div>
-                <div class="inspector">
-                  <div class="inspector-code" id="inspector-code">
-                    <button type="button" class="code-line" data-secret="CYJ-142">&lt;span class="pill" id="cyj-142"&gt;Launch&lt;/span&gt;</button>
-                    <button type="button" class="code-line">&lt;div class="label"&gt;Status: Ready&lt;/div&gt;</button>
-                    <button type="button" class="code-line">&lt;button class="cta"&gt;Boarding&lt;/button&gt;</button>
-                  </div>
-                  <div class="inspector-input-row">
-                    <input type="text" id="inspector-input" placeholder="geheime ID eingeben" />
-                    <button class="primary-btn" type="button" id="inspector-check">Prüfen</button>
-                  </div>
-                  <p class="muted" id="inspector-hint">Tipp: Klick auf das markierte Element, um die ID zu sehen.</p>
-                </div>
-                <button class="ghost-btn lab-next" data-level-next="3" disabled>Weiter</button>
-              </div>
-
-              <div class="lab-level" data-level="4">
-                <div class="lab-head">
-                  <p class="eyebrow">Level 4</p>
-                  <div>
-                    <h4>Abschluss-Quiz</h4>
-                    <p class="muted">3 Fragen – bei Erfolg springt das Schloss auf.</p>
-                  </div>
-                </div>
-                <form class="quiz" id="quiz-form">
-                  <div class="quiz-q">
-                    <p>1. Was liefert der Server?</p>
-                    <label><input type="radio" name="q1" value="assets" /> Dateien wie HTML, CSS, JS</label>
-                    <label><input type="radio" name="q1" value="hardware" /> Neue Hardware</label>
-                  </div>
-                  <div class="quiz-q">
-                    <p>2. Was passiert ohne CSS?</p>
-                    <label><input type="radio" name="q2" value="unstyled" /> Die Seite wirkt nackt und ungestylt.</label>
-                    <label><input type="radio" name="q2" value="faster" /> Sie lädt gar nicht.</label>
-                  </div>
-                  <div class="quiz-q">
-                    <p>3. Wofür nutzt du JS hier?</p>
-                    <label><input type="radio" name="q3" value="interaktion" /> Für Interaktionen wie Buttons.</label>
-                    <label><input type="radio" name="q3" value="farbe" /> Für Hintergrundfarbe.</label>
-                  </div>
-                  <div class="quiz-actions">
-                    <button type="submit" class="primary-btn">Antwort prüfen</button>
-                    <span class="muted" id="quiz-status">Viel Erfolg!</span>
-                  </div>
-                </form>
-                <button class="ghost-btn lab-next" data-level-next="4" disabled>Weiter</button>
-              </div>
-            </div>
             <div class="mini-progress-row">
               <p class="muted">Fortschritt im Modul</p>
               <div class="mini-progress"><span id="active-mini"></span><span class="mini-value" id="active-mini-val">0%</span></div>
             </div>
             <div class="topic-actions">
-              <button class="primary-btn lesson-btn" data-lesson-target="intro">Themen öffnen</button>
+              <button class="primary-btn lesson-btn" data-lesson-target="html">Themen öffnen</button>
             </div>
           </aside>
         </div>
@@ -539,32 +412,6 @@
           <div class="lesson-actions">
             <button class="ghost-btn" data-view-target="view-map">Zurück zur Roadmap</button>
           </div>
-        </div>
-      </section>
-
-      <section id="view-intro-level" class="view" aria-labelledby="intro-level-title">
-        <header class="section-head">
-          <div>
-            <p class="eyebrow">Einstieg · Optional</p>
-            <h2 id="intro-level-title">Level-Ansicht</h2>
-            <p class="lede">Diese Stufe ist ein sanfter Start ohne XP-Pflicht. Lies die Hinweise und probiere die Interaktion.</p>
-          </div>
-          <div class="lesson-actions">
-            <button class="ghost-btn" data-view-target="view-topics">Zurück zur Auswahl</button>
-            <button class="ghost-btn" data-view-target="view-map">Zurück zur Roadmap</button>
-          </div>
-        </header>
-
-        <div class="lesson-panel intro-level-layout">
-          <aside class="info-card">
-            <p class="eyebrow">Was du hier lernst</p>
-            <h4 id="intro-level-info-title">Level-Infos</h4>
-            <p class="muted" id="intro-level-info-body">Kurzer Überblick zum aktuellen Level.</p>
-            <ul class="detail-list" id="intro-level-info-points"></ul>
-            <p class="muted small">Dieses Modul ist optional und vergibt keine XP.</p>
-          </aside>
-
-          <div id="intro-level-host"></div>
         </div>
       </section>
 

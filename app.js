@@ -1,4 +1,4 @@
-import { defaultTemplate, HTML_LEVELS } from "./html-levels.js";
+import { HTML_LEVELS } from "./html-levels.js";
 import { computeHtmlProgress, loadHtmlState, setActiveLevel, getHtmlState } from "./html-state.js";
 import { renderHtmlLab, renderLevelOverview, wireHtmlLab } from "./html-lab.js";
 import { CSS_LEVELS } from "./css-content.js";
@@ -27,7 +27,6 @@ import { JS_LEVELS } from "./js-content.js";
 
 // Speicher-Schlüssel für localStorage
 const NAME_KEY = "cyj:name"; // Name des Nutzers
-const CODE_KEY = "cyj:code"; // Code-Stand (veraltet)
 const PROGRESS_KEY = "cyj:progress"; // Fortschritt pro Modul
 
 // Alle wichtigen HTML-Elemente aus dem Dokument holen
@@ -44,9 +43,6 @@ const progressChip = document.getElementById("overall-progress");
 const timelineItems = document.querySelectorAll(".timeline-item");
 const progressBars = document.querySelectorAll(".progress-bar");
 const miniProgressBars = document.querySelectorAll(".mini-progress span");
-const codeInput = document.getElementById("code-input");
-const previewFrame = document.getElementById("preview-frame");
-const resetCodeBtn = document.getElementById("reset-code-btn");
 const lessonButtons = document.querySelectorAll(".lesson-btn");
 const topicButtons = document.querySelectorAll(".topic-btn:not(.side-topic)");
 const sideTopicButtons = document.querySelectorAll(".side-topic");
@@ -745,44 +741,6 @@ function wireProfileNameForm() {
 	});
 }
 
-function loadCode() {
-	if (!codeInput) return;
-	const stored = localStorage.getItem(CODE_KEY) || defaultTemplate;
-	codeInput.value = stored;
-}
-
-function persistCode(value) {
-	localStorage.setItem(CODE_KEY, value);
-}
-
-function renderPreview() {
-	if (!previewFrame || !codeInput) return;
-	const doc = previewFrame.contentWindow.document;
-	doc.open();
-	doc.write(codeInput.value);
-	doc.close();
-}
-
-function wireEditor() {
-	if (!codeInput) return;
-	loadCode();
-	renderPreview();
-
-	codeInput.addEventListener("input", () => {
-		const value = codeInput.value;
-		persistCode(value);
-		renderPreview();
-	});
-
-	if (resetCodeBtn) {
-		resetCodeBtn.addEventListener("click", () => {
-			codeInput.value = defaultTemplate;
-			persistCode(defaultTemplate);
-			renderPreview();
-		});
-	}
-}
-
 function init() {
 	loadHtmlState();
 	hydrateCssState();
@@ -801,7 +759,6 @@ function init() {
 	wireProfileNameForm();
 	wireLevelsModuleTabs();
 	hydrateProgress();
-	wireEditor();
 	wireLessons();
 	wireTimelineHover();
 	wireSideTopics();
