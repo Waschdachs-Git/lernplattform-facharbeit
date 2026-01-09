@@ -9,7 +9,7 @@ import {
   getCurrentPhase,
 } from "./html-state.js";
 
-// Alle wichtigen HTML-Elemente aus dem Dokument holen
+// DOM-Refs
 const htmlLevelPanel = document.getElementById("html-level-panel");
 const htmlLevelTabs = document.querySelectorAll("[data-html-level]");
 const levelOverview = document.getElementById("level-overview");
@@ -182,9 +182,9 @@ export function renderLevelOverview(onOpenLevel) {
     const isRepeat = percent >= 100;
     cta.textContent = isRepeat ? "Level wiederholen" : "Level starten";
     cta.addEventListener("click", () => {
-			if (isRepeat) resetHtmlLevel(Number(key));
-			openHandler(Number(key));
-		});
+      if (isRepeat) resetHtmlLevel(Number(key));
+      openHandler(Number(key));
+    });
 
     const steps = document.createElement("span");
     steps.className = "muted";
@@ -250,8 +250,8 @@ export function renderHtmlLab() {
   }
   if (sandboxPreview) {
     // Vorschau ist unabhängig vom "fertig"-Haken und wird per Button gesteuert.
-		const html = getHtmlState().levels[levelKey].previewValue || "";
-		const doc = `<!doctype html>
+    const html = getHtmlState().levels[levelKey].previewValue || "";
+    const doc = `<!doctype html>
 <html lang="de">
   <head>
     <meta charset="utf-8" />
@@ -263,11 +263,11 @@ export function renderHtmlLab() {
   </head>
   <body>${html}</body>
 </html>`;
-		if ("srcdoc" in sandboxPreview) {
-			sandboxPreview.srcdoc = doc;
-		} else {
-			sandboxPreview.innerHTML = html;
-		}
+    if ("srcdoc" in sandboxPreview) {
+      sandboxPreview.srcdoc = doc;
+    } else {
+      sandboxPreview.innerHTML = html;
+    }
   }
 }
 
@@ -277,8 +277,8 @@ function showHtmlPreview(levelKey) {
   // Vorschau anzeigen, ohne das Level als fertig zu markieren
   const value = sandboxEditor?.value || "";
   updateLevelState(levelKey, { previewValue: value });
-	if (sandboxPreview) {
-		const doc = `<!doctype html>
+  if (sandboxPreview) {
+    const doc = `<!doctype html>
 <html lang="de">
   <head>
     <meta charset="utf-8" />
@@ -290,9 +290,9 @@ function showHtmlPreview(levelKey) {
   </head>
   <body>${value}</body>
 </html>`;
-		if ("srcdoc" in sandboxPreview) sandboxPreview.srcdoc = doc;
-		if (!("srcdoc" in sandboxPreview)) sandboxPreview.innerHTML = value;
-	}
+    if ("srcdoc" in sandboxPreview) sandboxPreview.srcdoc = doc;
+    if (!("srcdoc" in sandboxPreview)) sandboxPreview.innerHTML = value;
+  }
   if (sandboxFeedback && !getHtmlState().levels[levelKey].sandboxDone) sandboxFeedback.textContent = "Vorschau aktualisiert.";
 }
 

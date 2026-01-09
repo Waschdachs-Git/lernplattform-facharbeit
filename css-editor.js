@@ -1,9 +1,9 @@
 import { CSS_LEVELS, CSS_BASE_HTML, getCssPreviewHtml } from "./css-content.js";
 
-// Speicher-Schlüssel für den CSS-Fortschritt im Browser
+// Key für CSS-Fortschritt
 const CSS_STATE_KEY = "cyj:css_state";
 
-// Alle wichtigen HTML-Elemente aus dem Dokument holen
+// DOM-Refs
 const cssPanel = document.getElementById("css-level-panel");
 const cssTabs = document.querySelectorAll("[data-css-level]");
 const cssLevelTitle = document.getElementById("css-level-title");
@@ -35,17 +35,17 @@ let onSandboxComplete = () => {};
 // Erstellt einen frischen Lernstand für alle CSS-Level
 // Nutzt den Standard-CSS-Code aus css-content.js
 function buildDefaultCssState() {
-	// Startzustand für alle CSS-Level mit Demo-CSS füllen
+  // Startzustand für alle CSS-Level mit Demo-CSS füllen
   const levels = {};
   Object.keys(CSS_LEVELS).forEach((key) => {
     levels[key] = {
       theoryDone: false,
       checkDone: false,
       sandboxDone: false,
-		// Speichert, welche der 3 Sandbox-Aufgaben schon erledigt sind
-		tasksDone: [false, false, false],
-		// Was zuletzt per "Vorschau" angezeigt wurde
-		previewCssValue: CSS_LEVELS[key].sandbox.defaultCss,
+      // Speichert, welche der 3 Sandbox-Aufgaben schon erledigt sind
+      tasksDone: [false, false, false],
+      // Was zuletzt per "Vorschau" angezeigt wurde
+      previewCssValue: CSS_LEVELS[key].sandbox.defaultCss,
       cssValue: CSS_LEVELS[key].sandbox.defaultCss,
     };
   });
@@ -55,7 +55,7 @@ function buildDefaultCssState() {
 // Lädt den gespeicherten Lernstand aus dem Browser (localStorage)
 // Falls nichts gespeichert ist, wird der Default-Stand genutzt
 function loadCssState() {
-	// Gespeicherten Stand aus localStorage laden
+  // Gespeicherten Stand aus localStorage laden
   try {
     const stored = JSON.parse(localStorage.getItem(CSS_STATE_KEY) || "null");
     const levels = {};
@@ -63,27 +63,27 @@ function loadCssState() {
       levels[key] = {
         ...cssState.levels[key],
         ...(stored?.levels?.[key] || {}),
-			// Fallback, falls ältere Speicherstände noch kein tasksDone haben
-			tasksDone: stored?.levels?.[key]?.tasksDone || cssState.levels[key]?.tasksDone || [false, false, false],
-			previewCssValue: stored?.levels?.[key]?.previewCssValue || cssState.levels[key]?.previewCssValue || CSS_LEVELS[key].sandbox.defaultCss,
+        // Fallback, falls ältere Speicherstände noch kein tasksDone haben
+        tasksDone: stored?.levels?.[key]?.tasksDone || cssState.levels[key]?.tasksDone || [false, false, false],
+        previewCssValue:
+          stored?.levels?.[key]?.previewCssValue || cssState.levels[key]?.previewCssValue || CSS_LEVELS[key].sandbox.defaultCss,
       };
     });
     cssState = { ...cssState, ...(stored || {}), levels };
   } catch (err) {
-    console.warn("Konnte CSS-State nicht laden", err);
     cssState = buildDefaultCssState();
   }
   return cssState;
 }
 
 export function hydrateCssState() {
-	return loadCssState();
+  return loadCssState();
 }
 
 // Speichert den aktuellen Lernstand im Browser
 // So bleibt der Fortschritt auch nach dem Schließen erhalten
 function saveCssState() {
-	// Aktuellen Stand speichern
+  // Aktuellen Stand speichern
   localStorage.setItem(CSS_STATE_KEY, JSON.stringify(cssState));
 }
 
@@ -113,8 +113,8 @@ export function completeAllCssLevels() {
       theoryDone: true,
       checkDone: true,
       sandboxDone: true,
-		tasksDone: [true, true, true],
-  		previewCssValue: cssState.levels[key].previewCssValue,
+      tasksDone: [true, true, true],
+      previewCssValue: cssState.levels[key].previewCssValue,
       cssValue: cssState.levels[key].cssValue,
     };
   });
@@ -130,7 +130,7 @@ export function resetCssLevel(levelKey) {
     theoryDone: false,
     checkDone: false,
     sandboxDone: false,
-		tasksDone: [false, false, false],
+    tasksDone: [false, false, false],
     previewCssValue: CSS_LEVELS[key].sandbox.defaultCss,
     cssValue: CSS_LEVELS[key].sandbox.defaultCss,
   };
@@ -173,7 +173,7 @@ function renderCssPreview(levelKey, cssText) {
 }
 
 function renderChecklist(levelKey) {
-	// Checkliste neu malen und fertig abhaken, wenn Sandbox durch ist.
+  // Checkliste neu malen und fertig abhaken, wenn Sandbox durch ist.
   if (!cssChecklist) return;
   cssChecklist.innerHTML = "";
   const tasks = CSS_LEVELS[levelKey].sandbox.checklist;
@@ -295,9 +295,9 @@ export function renderCssLevelOverview(onOpenLevel) {
     const isRepeat = percent >= 100;
     cta.textContent = isRepeat ? "Level wiederholen" : "Level starten";
     cta.addEventListener("click", () => {
-			if (isRepeat) resetCssLevel(Number(key));
-			openHandler(Number(key));
-		});
+      if (isRepeat) resetCssLevel(Number(key));
+      openHandler(Number(key));
+    });
 
     const steps = document.createElement("span");
     steps.className = "muted";
@@ -354,8 +354,8 @@ function renderSandbox(levelKey) {
   }
   if (cssEditor) cssEditor.value = cssState.levels[levelKey].cssValue;
 
-	// Vorschau wird nur per Button aktualisiert (wir zeigen hier den letzten Stand).
-	renderCssPreview(levelKey, cssState.levels[levelKey].previewCssValue);
+  // Vorschau wird nur per Button aktualisiert (wir zeigen hier den letzten Stand).
+  renderCssPreview(levelKey, cssState.levels[levelKey].previewCssValue);
   renderChecklist(levelKey);
   if (cssFeedback) cssFeedback.textContent = cssState.levels[levelKey].sandboxDone ? "Sieht gut aus!" : "";
 }
@@ -364,25 +364,25 @@ function renderCssLabUI() {
   const levelKey = cssState.activeLevel;
   const data = CSS_LEVELS[levelKey];
   if (!data) return;
-	const phase = getCurrentCssPhase(cssState.levels[levelKey]);
+  const phase = getCurrentCssPhase(cssState.levels[levelKey]);
 
   renderTabs(levelKey);
   if (cssLevelTitle) cssLevelTitle.textContent = data.title;
   if (cssLevelDesc) cssLevelDesc.textContent = "Drei Phasen: Theorie, Check, Sandbox.";
   if (cssTheoryText) cssTheoryText.textContent = data.theory;
-	renderCssPhaseBadges(levelKey);
-	setCssPhaseVisibility(phase);
+  renderCssPhaseBadges(levelKey);
+  setCssPhaseVisibility(phase);
   if (cssTheoryBtn) {
     cssTheoryBtn.disabled = cssState.levels[levelKey].theoryDone;
     cssTheoryBtn.textContent = cssState.levels[levelKey].theoryDone ? "Abgehakt" : "Gelesen";
   }
-	if (cssCheckFeedback) cssCheckFeedback.textContent = cssState.levels[levelKey].checkDone ? "Sauber, weiter geht's!" : "";
+  if (cssCheckFeedback) cssCheckFeedback.textContent = cssState.levels[levelKey].checkDone ? "Sauber, weiter geht's!" : "";
   renderCheck(levelKey);
   renderSandbox(levelKey);
 }
 
 function pruefeTeilaufgaben(levelKey, cssText) {
-	// Hier prüfen wir die 3 Sandbox-Aufgaben pro Level.
+  // Hier prüfen wir die 3 Sandbox-Aufgaben pro Level.
   const css = cssText || "";
 
   const findMediaSegment = (maxWidthPx) => {
@@ -461,17 +461,17 @@ function pruefeTeilaufgaben(levelKey, cssText) {
     const titleGold = /\.titel\s*{[^}]*color\s*:\s*#ffd700\s*;/i.test(css);
     const btnText = /\.knopf\s*{[^}]*color\s*:\s*#ffffff\s*;/i.test(css);
     const btnBg = /\.knopf\s*{[^}]*background(-color)?\s*:\s*#0000ff\s*;/i.test(css);
-		const erledigt = [bgDark, titleGold, btnText && btnBg];
-		const tip = !bgDark
-			? "Setze für .hintergrund background-color: #333333;"
-			: !titleGold
-				? "Gib .titel die Farbe color: #ffd700;"
-				: !btnText
-					? "In .knopf fehlt noch: color: #ffffff;"
-					: !btnBg
-						? "In .knopf fehlt noch: background-color: #0000ff;"
-						: "";
-		return { erledigt, tip };
+    const erledigt = [bgDark, titleGold, btnText && btnBg];
+    const tip = !bgDark
+      ? "Setze für .hintergrund background-color: #333333;"
+      : !titleGold
+        ? "Gib .titel die Farbe color: #ffd700;"
+        : !btnText
+          ? "In .knopf fehlt noch: color: #ffffff;"
+          : !btnBg
+            ? "In .knopf fehlt noch: background-color: #0000ff;"
+            : "";
+    return { erledigt, tip };
   }
 
   if (levelKey === 6) {
@@ -479,15 +479,15 @@ function pruefeTeilaufgaben(levelKey, cssText) {
     const bodyArial = /body\s*{[^}]*font-family\s*:\s*['\"]?Arial['\"]?\s*;?/i.test(css);
     const h1Serif = /h1\s*{[^}]*font-family\s*:\s*['\"]?Times\s+New\s+Roman['\"]?\s*;?/i.test(css);
     const blockVerdana = /\.text-block\s*{[^}]*font-family\s*:\s*Verdana\s*,\s*sans-serif\s*;?/i.test(css);
-		const erledigt = [bodyArial, h1Serif, blockVerdana];
-		const tip = !bodyArial
-			? "Setze im body: font-family: Arial;"
-			: !h1Serif
-				? "Gib h1 z. B.: font-family: \"Times New Roman\";"
-				: !blockVerdana
-					? "Setze .text-block: font-family: Verdana, sans-serif;"
-					: "";
-		return { erledigt, tip };
+    const erledigt = [bodyArial, h1Serif, blockVerdana];
+    const tip = !bodyArial
+      ? "Setze im body: font-family: Arial;"
+      : !h1Serif
+        ? "Gib h1 z. B.: font-family: \"Times New Roman\";"
+        : !blockVerdana
+          ? "Setze .text-block: font-family: Verdana, sans-serif;"
+          : "";
+    return { erledigt, tip };
   }
 
   if (levelKey === 7) {

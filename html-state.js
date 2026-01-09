@@ -1,20 +1,19 @@
 import { HTML_LEVELS } from "./html-levels.js";
 
-// Speicher-Schlüssel für den HTML-Fortschritt im Browser
+// Key für HTML-Fortschritt
 export const HTML_STATE_KEY = "cyj:html_state";
 
-// Erstellt einen frischen Lernstand für alle HTML-Level
-// Alle Level starten mit "nicht erledigt"
+// Default-State für alle HTML-Level
 export function buildDefaultHtmlState() {
   const levels = {};
   Object.keys(HTML_LEVELS).forEach((key) => {
-		// previewValue: Was zuletzt per "Vorschau" angezeigt wurde (unabhängig vom "fertig"-Haken)
+    // previewValue: Was zuletzt per "Vorschau" angezeigt wurde (unabhängig vom "fertig"-Haken)
     levels[key] = { theoryDone: false, checkDone: false, sandboxDone: false, sandboxValue: "", previewValue: "" };
   });
   return { activeLevel: 1, levels };
 }
 
-// Standard-Zustand, falls nichts gespeichert ist
+// Fallback, falls nichts gespeichert ist
 export const defaultHtmlState = buildDefaultHtmlState();
 // Aktueller Lernstand (wird beim Laden mit localStorage überschrieben)
 export let htmlState = { ...defaultHtmlState };
@@ -35,7 +34,6 @@ export function loadHtmlState() {
     });
     htmlState = { ...defaultHtmlState, ...(stored || {}), levels: mergedLevels };
   } catch (error) {
-    console.warn("Konnte HTML-State nicht laden, verwende Defaults", error);
     htmlState = { ...defaultHtmlState };
   }
   return htmlState;
@@ -89,7 +87,7 @@ export function resetHtmlLevel(levelKey) {
     checkDone: false,
     sandboxDone: false,
     sandboxValue: "",
-		previewValue: "",
+    previewValue: "",
   });
 }
 

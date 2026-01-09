@@ -1,22 +1,17 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <!-- Meta-Daten und Titel der Seite -->
   <meta charset="UTF-8" />
   <title>Schritt für Schritt zur eigenen Website</title>
-  
-  <!-- Google Fonts: Space Grotesk Schriftart -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  
-  <!-- Haupt-Stylesheet -->
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="app-shell">
-    <!-- Header mit Navigation und Profil-Chip
-         Bleibt beim Scrollen oben (sticky) -->
     <header class="app-header">
       <div class="brand">Schritt für Schritt zur eigenen Website</div>
       <nav class="app-nav" aria-label="Hauptnavigation">
@@ -33,8 +28,6 @@
     </header>
 
     <main id="app">
-      <!-- View: Namen eingeben (Startbildschirm)
-           Wird als erstes angezeigt, danach wird der Name im localStorage gespeichert -->
       <section id="view-name" class="view view-active" aria-labelledby="name-heading">
         <div class="gate">
           <div>
@@ -54,8 +47,6 @@
         </div>
       </section>
 
-      <!-- View: Startseite (Landing Page)
-           Zeigt Hero-Bereich, Features und Call-to-Action -->
       <section id="view-start" class="view" aria-labelledby="start-heading">
         <div class="landing">
           <div class="hero-block">
@@ -68,7 +59,7 @@
 
             <div class="student-note" role="note" aria-label="Hinweis">
               <h2>Hinweis: Schülerprojekt</h2>
-              <p class="muted">Dieses Projekt wurde im Rahmen einer Facharbeit erstellt. Fokus liegt auf Lernlogik, Verständlichkeit und sauberer Struktur. Das Design darf sich noch verändern.</p>
+              <p class="muted">Dieses Projekt wurde im Rahmen meiner Facharbeit erstellt. Fokus liegt auf Lernlogik, Verständlichkeit und sauberer Struktur.</p>
             </div>
 
             <div class="app-preview" aria-label="App Vorschau">
@@ -107,7 +98,7 @@
 
           <div class="info-block">
             <h2>Was macht diese Website?</h2>
-            <p class="lede">Die App zeigt einen Lernpfad mit Modulen. In jedem Modul gibt es Levels, die in drei Phasen gelöst werden. Am Ende entsteht eine kleine eigene Website.</p>
+            <p class="lede">Die Website zeigt einen Lernpfad mit Modulen. In jedem Modul gibt es Levels, die in drei Phasen gelöst werden.</p>
           </div>
 
           <div class="feature-grid landing-grid">
@@ -135,8 +126,6 @@
         </div>
       </section>
 
-      <!-- View: Roadmap (Hauptnavigation durch alle Module)
-           Zeigt Module-Karten und Detail-Panel mit Themen -->
       <section id="view-map" class="view" aria-labelledby="map-heading">
         <header class="section-head map-head">
           <div>
@@ -341,8 +330,6 @@
         </div>
       </section>
 
-      <!-- View: Level-Übersicht
-           Zeigt alle Level eines Moduls (HTML, CSS oder JS) in Kartenform -->
       <section id="view-levels" class="view" aria-labelledby="levels-heading">
         <header class="section-head">
           <div>
@@ -366,8 +353,6 @@
         <div class="level-overview" id="js-level-overview" hidden></div>
       </section>
 
-      <!-- View: Lesson (Hauptarbeitsbereich für HTML/CSS/JS Levels)
-           Zeigt die drei Phasen: Theorie, Check und Sandbox -->
       <section id="view-lesson" class="view" aria-labelledby="lesson-heading">
         <header class="section-head">
           <div>
@@ -388,8 +373,6 @@
             </div>
           </div>
 
-          <!-- HTML-Lab: Arbeitsbereich für alle HTML-Level
-               Zeigt Theorie, Check-Fragen und Sandbox mit Live-Vorschau -->
           <div class="html-lab" id="html-level-panel" hidden aria-live="polite">
             <div class="html-lab-head">
               <div>
@@ -431,26 +414,24 @@
                 <p class="muted" id="sandbox-hint"></p>
                 <ul class="sandbox-checklist" id="sandbox-checklist"></ul>
 
-				<div class="sandbox-split">
-				  <div class="sandbox-pane sandbox-pane-preview">
+        <div class="sandbox-split">
+          <div class="sandbox-pane sandbox-pane-preview">
           <iframe class="preview-frame" id="sandbox-preview" title="HTML Vorschau"></iframe>
-				  </div>
-				  <div class="sandbox-pane sandbox-pane-editor">
+          </div>
+          <div class="sandbox-pane sandbox-pane-editor">
           <textarea id="sandbox-editor" class="code-input" rows="12" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea>
-					<div class="phase-actions">
-					  <button class="ghost-btn" id="sandbox-show-preview" type="button">Vorschau</button>
-					  <button class="primary-btn" id="sandbox-check" type="button">Ergebnis überprüfen</button>
-					  <span class="muted" id="sandbox-feedback"></span>
-					</div>
-				  </div>
-				</div>
+          <div class="phase-actions">
+            <button class="ghost-btn" id="sandbox-show-preview" type="button">Vorschau</button>
+            <button class="primary-btn" id="sandbox-check" type="button">Ergebnis überprüfen</button>
+            <span class="muted" id="sandbox-feedback"></span>
+          </div>
+          </div>
+        </div>
               </article>
 
             </div>
           </div>
 
-          <!-- CSS-Lab: Arbeitsbereich für alle CSS-Level
-               Zeigt Theorie, Check-Fragen und Sandbox mit Live-Preview -->
           <div class="html-lab" id="css-level-panel" hidden aria-live="polite">
             <div class="html-lab-head">
               <div>
@@ -459,9 +440,9 @@
                 <p class="muted" id="css-level-desc">Drei Phasen: Theorie, Check, Sandbox.</p>
               </div>
               <div class="phase-badges" id="css-phase-badges"></div>
-			  <div class="lab-head-actions">
-				<button class="ghost-btn" data-view-target="view-levels" type="button">Zur Level Übersicht</button>
-			  </div>
+        <div class="lab-head-actions">
+        <button class="ghost-btn" data-view-target="view-levels" type="button">Zur Level Übersicht</button>
+        </div>
             </div>
 
             <div class="phase-grid">
@@ -492,25 +473,23 @@
                 <p class="muted" id="css-sandbox-hint"></p>
                 <ul class="sandbox-checklist" id="css-sandbox-checklist"></ul>
 
-				<div class="sandbox-split">
-				  <div class="sandbox-pane sandbox-pane-preview">
-					<iframe class="preview-frame" id="css-sandbox-preview" title="CSS Vorschau"></iframe>
-				  </div>
-				  <div class="sandbox-pane sandbox-pane-editor">
+        <div class="sandbox-split">
+          <div class="sandbox-pane sandbox-pane-preview">
+          <iframe class="preview-frame" id="css-sandbox-preview" title="CSS Vorschau"></iframe>
+          </div>
+          <div class="sandbox-pane sandbox-pane-editor">
           <textarea id="css-sandbox-editor" class="code-input" rows="12" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea>
-					<div class="phase-actions">
-					  <button class="ghost-btn" id="css-sandbox-show-preview" type="button">Vorschau</button>
-					  <button class="primary-btn" id="css-sandbox-check" type="button">Ergebnis überprüfen</button>
-					  <span class="muted" id="css-sandbox-feedback"></span>
-					</div>
-				  </div>
-				</div>
+          <div class="phase-actions">
+            <button class="ghost-btn" id="css-sandbox-show-preview" type="button">Vorschau</button>
+            <button class="primary-btn" id="css-sandbox-check" type="button">Ergebnis überprüfen</button>
+            <span class="muted" id="css-sandbox-feedback"></span>
+          </div>
+          </div>
+        </div>
               </article>
             </div>
           </div>
 
-          <!-- JS-Lab: Arbeitsbereich für alle JavaScript-Level
-               Zeigt Theorie, Check-Fragen und Sandbox mit Console-Output -->
           <div class="html-lab" id="js-level-panel" hidden aria-live="polite">
             <div class="html-lab-head">
               <div>
@@ -519,9 +498,9 @@
                 <p class="muted" id="js-level-desc">Drei Phasen: Theorie, Check, Sandbox.</p>
               </div>
               <div class="phase-badges" id="js-phase-badges"></div>
-			  <div class="lab-head-actions">
-				<button class="ghost-btn" data-view-target="view-levels" type="button">Zur Level Übersicht</button>
-			  </div>
+        <div class="lab-head-actions">
+        <button class="ghost-btn" data-view-target="view-levels" type="button">Zur Level Übersicht</button>
+        </div>
             </div>
 
             <div class="phase-grid">
@@ -552,20 +531,20 @@
                 <p class="muted" id="js-sandbox-hint"></p>
                 <ul class="sandbox-checklist" id="js-sandbox-checklist"></ul>
 
-				<div class="sandbox-split">
+        <div class="sandbox-split">
           <div class="sandbox-pane sandbox-pane-preview">
           <iframe class="preview-frame" id="js-sandbox-preview" title="JS Vorschau" sandbox="allow-scripts"></iframe>
             <pre class="code-input console-box" id="js-console"></pre>
-				  </div>
-				  <div class="sandbox-pane sandbox-pane-editor">
-					<textarea id="js-sandbox-editor" class="code-input" rows="12" spellcheck="false"></textarea>
-					<div class="phase-actions">
-					  <button class="ghost-btn" id="js-sandbox-run" type="button">Code ausführen</button>
-					  <button class="primary-btn" id="js-sandbox-check" type="button">Ergebnis überprüfen</button>
-					  <span class="muted" id="js-sandbox-feedback"></span>
-					</div>
-				  </div>
-				</div>
+          </div>
+          <div class="sandbox-pane sandbox-pane-editor">
+          <textarea id="js-sandbox-editor" class="code-input" rows="12" spellcheck="false"></textarea>
+          <div class="phase-actions">
+            <button class="ghost-btn" id="js-sandbox-run" type="button">Code ausführen</button>
+            <button class="primary-btn" id="js-sandbox-check" type="button">Ergebnis überprüfen</button>
+            <span class="muted" id="js-sandbox-feedback"></span>
+          </div>
+          </div>
+        </div>
               </article>
             </div>
           </div>
@@ -622,8 +601,6 @@
         </div>
       </section>
 
-      <!-- View: Profil (Dashboard mit Level, XP und Badges)
-           Zeigt den aktuellen Fortschritt und erlaubt Namensänderung -->
       <section id="view-profile" class="view" aria-labelledby="profile-heading">
         <header class="section-head">
           <div>
@@ -686,8 +663,6 @@
         </div>
       </section>
 
-      <!-- View: Finish (Abschlussseite nach Beenden aller Module)
-           Gratulation und Option für Neustart -->
       <section id="view-finish" class="view" aria-labelledby="finish-heading">
         <div class="hero finish">
           <p class="eyebrow">Du hast es geschafft</p>
@@ -703,8 +678,6 @@
     </main>
   </div>
 
-  <!-- Haupt-JavaScript-Datei (als ES6 Module)
-       Steuert die gesamte App-Logik, Views und Module -->
   <script type="module" src="app.js"></script>
 </body>
 </html>

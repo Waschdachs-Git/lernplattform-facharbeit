@@ -65,72 +65,72 @@ export const CSS_BASE_HTML = `
 `;
 
 export function getCssPreviewHtml(levelKey) {
-	const key = Number(levelKey);
-	// Zeigt nur die HTML-Elemente, die für das jeweilige Level wichtig sind
-	// So ist die Vorschau nicht überladen und Schüler können sich besser konzentrieren
-	if (key <= 1) {
-		return `
+  const key = Number(levelKey);
+  // Zeigt nur die HTML-Elemente, die für das jeweilige Level wichtig sind
+  // So ist die Vorschau nicht überladen und Schüler können sich besser konzentrieren
+  if (key <= 1) {
+    return `
 <div class="page">
   <h1>Eine bunte Seite</h1>
   <p>Hier steht ein erster Absatz.</p>
   <p>Hier steht ein zweiter Absatz.</p>
 </div>`;
-	}
-	if (key === 2) {
-		return `
+  }
+  if (key === 2) {
+    return `
 <div class="page">
   <div class="box">Das ist eine Box</div>
   <p class="highlight">Ein leuchtender Text</p>
   <p class="rand">Ein Text mit Rahmen</p>
 </div>`;
-	}
-	if (key === 3) {
-		return `
+  }
+  if (key === 3) {
+    return `
 <div class="page">
   <h1>Eine bunte Seite</h1>
   <p>Hier steht ein erster Absatz.</p>
   <p>Hier steht ein zweiter Absatz.</p>
 </div>`;
-	}
-	if (key === 4) {
-		return `
+  }
+  if (key === 4) {
+    return `
 <div class="page">
   <div class="box">Das ist eine Box</div>
 </div>`;
-	}
-	if (key === 5) {
-		return `
+  }
+  if (key === 5) {
+    return `
 <div class="page">
   <div class="hintergrund">
     <h2 class="titel">Hex-Farben ausprobieren</h2>
     <button class="knopf" type="button">Klick mich</button>
   </div>
 </div>`;
-	}
-	if (key === 6) {
-		return `
+  }
+  if (key === 6) {
+    return `
 <div class="page">
   <h1>Schriften testen</h1>
   <div class="text-block">Text-Block für Schriftarten</div>
 </div>`;
-	}
-	if (key === 7) {
-		return `
+  }
+  if (key === 7) {
+    return `
 <div class="page">
   <div class="karte">Eine Karte (für Rahmen & Rundungen)</div>
   <button class="kreis" type="button">Kreis</button>
   <img alt="Demo Bild" src="https://via.placeholder.com/260x140" />
 </div>`;
-	}
-	if (key === 8) {
-		return `
+  }
+  if (key === 8) {
+    return `
 <div class="page">
   <div class="glow">Glow Effekt</div>
   <div class="combo">Combo Box</div>
 </div>`;
-	}
-	if (key >= 9 && key <= 12) {
-		return `
+  }
+  if (key >= 9 && key <= 12) {
+    return `
 <div class="page">
   <h2>Layout-Demo</h2>
   <div class="span-demo">
@@ -144,9 +144,9 @@ export function getCssPreviewHtml(levelKey) {
     <div class="box demo-box demo-c">Box 3</div>
   </div>
 </div>`;
-	}
-	if (key >= 13 && key <= 14) {
-		return `
+  }
+  if (key >= 13 && key <= 14) {
+    return `
 <div class="page">
   <h2>Responsive-Demo</h2>
   <div class="layout-container">
@@ -157,9 +157,9 @@ export function getCssPreviewHtml(levelKey) {
     </div>
   </div>
 </div>`;
-	}
-	if (key === 15) {
-		return `
+  }
+  if (key === 15) {
+    return `
 <div class="page">
   <h2>Galerie-Demo</h2>
   <div class="galerie">
@@ -170,9 +170,9 @@ export function getCssPreviewHtml(levelKey) {
     <div class="galerie-item">5</div>
   </div>
 </div>`;
-	}
-	if (key === 16) {
-		return `
+  }
+  if (key === 16) {
+    return `
 <div class="page">
   <h2>Mobile-First-Demo</h2>
   <div class="mobile-layout">
@@ -181,9 +181,9 @@ export function getCssPreviewHtml(levelKey) {
     <div class="inhalt">Inhalt</div>
   </div>
 </div>`;
-	}
+  }
 
-	return CSS_BASE_HTML;
+  return CSS_BASE_HTML;
 }
 
 // Enthält alle 16 Level fürs CSS-Modul
